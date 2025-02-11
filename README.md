@@ -5,7 +5,7 @@ Interactive Maps for gen 1,3 and 4 have already been created, its time to add th
 
 Things that are planned So far:
 - implement a better encounter table (Than the previous interactive maps)
-- be able to view information about npcs (redirect to [bulbapedia](https://bulbapedia.bulbagarden.net/) or [seribii](https://www.serebii.net/))
+- be able to view information about npcs (redirect to [bulbapedia](https://bulbapedia.bulbagarden.net/) or [serebii](https://www.serebii.net/))
 - item locations
 - alternate black/white rooms
 - seasons!! (later date)
