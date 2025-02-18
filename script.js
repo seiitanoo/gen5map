@@ -1,23 +1,71 @@
-// Leaflet map stuff idk?
+// Leaflet map setup (same as before)
 var map = L.map('map', {
     crs: L.CRS.Simple,
     minZoom: -2.5,
     maxZoom: 2.5
 });
+//creating an array of all the images (perferably we make these 'relatively' 
+// small so we can do the seperate image thing.) this also enables us to just make new const for each
+// area. So say lowerleftunova, make const LLU =  [each image's data here].
+const imageData = [
+    // Lower Left Unova
+    {
+        y: 0,
+        x: 0,
+        width: 4777,
+        height: 3906,
+        path: 'tmpimg/LowerLeftUnova.png'
+    },
+    // Castelia City
+    {
+        y: 1024,
+        x: 512,
+        width: 2048,
+        height: 1536,
+        path: 'tmpimg/CasteliaCity.png'
+    },
+    // Lower Central Unova
+    {
+        y: 2050,
+        x: 500,
+        width: 3184,
+        height: 1300,
+        path: 'tmpimg/LowerCentralUnova.png'
+    },
+]
+        // loop to draw each map piece
+        for (const image of imageData) {
+            // second element of array gets the correct image bounding box
+            const bounds = [[image.y, image.x], [image.y + image.height, image.x + image.width]];
+            // crs: L.CRS.Simple is some leaflet stuff to say the coordinates are PIXELS and not litteral real lat and long data
+            L.imageOverlay(image.path, bounds, {crs: L.CRS.Simple}).addTo(map);
+            }
+    
+    // Fit the map bounds to encompass all images
+    const allBounds = imageData.map(image => [[image.y, image.x], [image.y + image.height, image.x + image.width]]);
+    // ngl i dont understand this math ill do it later, i chatgpt'ed this part. from my understanding it uses more complex math to make sure no fuckery happens when a new image is added
+    // to the array, which would completely disrupt the bounding box we used before
+    const combinedBounds = allBounds.reduce((acc, curr) => {
+        const [[minY, minX], [maxY, maxX]] = curr;
+        return [[Math.min(acc[0][0], minY), Math.min(acc[0][1], minX)], [Math.max(acc[1][0], maxY), Math.max(acc[1][1], maxX)]];
+    }, [[Infinity, Infinity], [-Infinity, -Infinity]]);
+    
+    map.fitBounds(combinedBounds);
+    
 
-// Coordinates and size for map bounds [y-axis x-axis] [height, width], if change y1/x1 must change y2/x2 for positioning.
-var bounds1 = [[300, -896], [2276, 624]]; // Bounds for Lower Left Unova
-var bounds2 = [[1024, 512], [2048, 1536]]; // Bounds for Castelia City
-var bounds3 = [[2050, 500], [3184, 1300]]; // Bounds for Lower Central Unova
-
-// Places the image ontop of the map
-L.imageOverlay('tmpimg/LowerLeftUnova.png', bounds1).addTo(map);
-L.imageOverlay('tmpimg/CasteliaCity.png', bounds2).addTo(map);
-L.imageOverlay('tmpimg/LowerCentralUnova.png', bounds3).addTo(map);
-
-// Gives map view limits to its given bound
-map.fitBounds(bounds2);
 // Adds a marker on the map when clicked
 map.on('click', function(e) {
     L.marker(e.latlng).addTo(map).bindPopup("New Marker");
+});
+
+// Debugging feature: Displaying mouse coordinates
+map.on('mousemove', function(e) {
+    // Get the mouse position (LatLng format)
+    var latlng = e.latlng;
+
+    // Log to console (you can change this to display somewhere else)
+    console.log('Mouse position: Lat: ' + latlng.lat + ', Lng: ' + latlng.lng);
+
+    // Alternatively, update an HTML element with the coordinates
+    document.getElementById('coords').innerHTML = "Lat: " + latlng.lat.toFixed(3) + ", Lng: " + latlng.lng.toFixed(3);
 });
