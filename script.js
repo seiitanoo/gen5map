@@ -79,3 +79,4 @@ map.on('mousemove', function(e) {
     // Alternatively, update an HTML element with the coordinates
     document.getElementById('coords').innerHTML = "Lat: " + latlng.lat.toFixed(3) + ", Lng: " + latlng.lng.toFixed(3);
 });
+// This comment is a test
