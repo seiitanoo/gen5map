@@ -4,7 +4,7 @@
 
 //Array Explanation
 
-//  the 'type:" shows the topographical location of the image.
+//  the 'area:" shows the topographical location of the image.
 //  LowerLeftUnova:0, CentralUnova: 1, LowerRightUnova: 2
 //  UpperUnova: 4, PokemonLeague: 5, SpecialLocation: 6 
 // the y, and x are the positional data of the image. use debug to help you, its based on the images lower left corner position
@@ -15,14 +15,56 @@
 
 const mapData = [
     {
-        type: "city",
+        area: 0,
         //position
         y: 0,
         x: 0,
         //image size
         width: 877,
         height:1115,
-        path: 'lowerleftunova/Aspertia City.png'
+        path: 'lowerleftunova/AspertiaCity.png'
+    },
+    {
+        area: 0,
+        //position
+        y: 1070,
+        x: 1320,
+        //image size
+        width: 600,
+        height:997,
+        path: 'lowerleftunova/FloccesyTown.png'
+    },
+    {
+        area: 0,
+        //position
+        y: 1060,
+        x: 350,
+        //image size
+        width: 978,
+        height:595,
+        path: 'lowerleftunova/Route19.png'
+    },
+    {
+        area: 0,
+        //position
+        y: 1440,
+        x: 3090,
+        //image size
+        width: 1319,
+        height:676,
+        path: 'lowerleftunova/VirbankCity.png'
+    },
+    {
+        area: 0,
+        //position
+        y: 1036,
+        x: 1915,
+        //image size
+        width: 1185,
+        height:1080,
+        path: 'lowerleftunova/Route20.png'
     }
+   
+  
 ]
 export default mapData;

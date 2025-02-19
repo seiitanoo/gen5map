@@ -35,7 +35,7 @@ var map = L.map('map', {
     }, [[Infinity, Infinity], [-Infinity, -Infinity]]);
     
     map.fitBounds(combinedBounds);
-    map.setView([516, 437], 0);
+    map.setView([1552, 2060], -2.0);
    //comment this out if you Don't want the debug function
    debug(map);
    
