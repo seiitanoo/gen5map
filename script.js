@@ -1,6 +1,6 @@
 // Calling From other script
-import mapData from '/mapdata.js';
-import debug from '/debug.js';
+import mapData from './scripts/mapdata.js';
+import debug from './scripts/debug.js';
 
 // Leaflet map setup (same as before)
 var map = L.map('map', {
