@@ -1,9 +1,11 @@
-// Leaflet map setup (same as before)
+// Leaflet map setup (same as before)S
 var map = L.map('map', {
     crs: L.CRS.Simple,
-    minZoom: -2.5,
+    minZoom: -4.0,
     maxZoom: 2.5
 });
+//inital map position
+map.setView([2490, 4118], 2.5);
 //creating an array of all the images (perferably we make these 'relatively' 
 // small so we can do the seperate image thing.) this also enables us to just make new const for each
 // area. So say lowerleftunova, make const LLU =  [each image's data here].
@@ -19,17 +21,17 @@ const imageData = [
     // Castelia City
     {
         y: 1024,
-        x: 512,
-        width: 2048,
-        height: 1536,
-        path: 'tmpimg/CasteliaCity.png'
+        x: 5000,
+        width: 3922,
+        height: 3596,
+        path: 'Map Piece Clusters/FullCluster/CasteliaCity.png'
     },
     // Lower Central Unova
     {
-        y: 2050,
-        x: 500,
-        width: 3184,
-        height: 1300,
+        y: 4200,
+        x: 4155,
+        width: 4396,
+        height: 4685,
         path: 'tmpimg/LowerCentralUnova.png'
     },
 ]
@@ -38,7 +40,11 @@ const imageData = [
             // second element of array gets the correct image bounding box
             const bounds = [[image.y, image.x], [image.y + image.height, image.x + image.width]];
             // crs: L.CRS.Simple is some leaflet stuff to say the coordinates are PIXELS and not litteral real lat and long data
-            L.imageOverlay(image.path, bounds, {crs: L.CRS.Simple}).addTo(map);
+            L.imageOverlay(image.path, bounds,{
+                crs: L.CRS.Simple, 
+                    width: image.width, 
+                    height: image.height
+                }).addTo(map);
             }
     
     // Fit the map bounds to encompass all images
@@ -55,7 +61,11 @@ const imageData = [
 
 // Adds a marker on the map when clicked
 map.on('click', function(e) {
-    L.marker(e.latlng).addTo(map).bindPopup("New Marker");
+    let lat = e.latlng.lat;
+    let lng = e.latlng.lng;
+    let coordinates = "Latitude: " + lat + "<br>Longitude: " + lng; // Format coordinates
+
+    L.marker(e.latlng).addTo(map).bindPopup(coordinates); // Use coordinates in popup
 });
 
 // Debugging feature: Displaying mouse coordinates

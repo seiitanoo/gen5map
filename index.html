@@ -3,19 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--Adding Leaflet CSS-->
+    <title>Gen 5 Interactive Map</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  
+    <!-- #map .leaflet class ensures that the images when zoomed are still pixel perfect!! important!! -->
     <style>
         #map {
             width: 100%; 
-            height: 710px;
+            height: 910px;
         }
+        #coords {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 5px;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+        }
+      
+        #map .leaflet-image-layer {
+    image-rendering: pixelated
+}
     </style>
-    <title>Gen 5 Interactive Map</title>
 </head>
 <body>
     <!--Creating a div to hold the map-->
     <div id="map"></div>
+
+    <!--Div to display mouse coordinates -->
+    <div id="coords">Lat: 0.000, Lng: 0.000</div>
+
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="script.js"></script>
 </body>
