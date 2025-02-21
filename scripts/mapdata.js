@@ -63,8 +63,17 @@ const mapData = [
         width: 1185,
         height:1080,
         path: 'lowerleftunova/Route20.png'
+    },
+    {
+        area: 0,
+        //position
+        y: 1050,
+        x: 3100,
+        //image size
+        width: 693,
+        height: 481,
+        path: 'lowerleftunova/Virbank Complex (Outside.png'
     }
-   
   
 ]
 export default mapData;
