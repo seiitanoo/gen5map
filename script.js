@@ -36,6 +36,13 @@ var map = L.map('map', {
     
     map.fitBounds(combinedBounds);
     map.setView([1552, 2060], -2.0);
+
+
+    imageOverlay.on('mouseover', function(event){
+        console.log('mouse over image overlay');
+        event.target.getElement().style.border = '2px solid red';
+    });
+    
    //comment this out if you Don't want the debug function
    debug(map);
    
