@@ -37,7 +37,7 @@ var map = L.map('map', {
     map.fitBounds(combinedBounds);
     map.setView([1552, 2060], -2.0);
 
-
+const imageOverlay = L.imageOverlay;
     imageOverlay.on('mouseover', function(event){
         console.log('mouse over image overlay');
         event.target.getElement().style.border = '2px solid red';
