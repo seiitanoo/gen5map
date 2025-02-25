@@ -12,12 +12,16 @@
 // you can call a specific arrays functions using mapData[yournumber].(type,x,y,width,height,path)
 
 const mapData = [
-    {area:0, y:0, x:0, width:877, height:1115, path:'lowerleftunova/AspertiaCity.png'},
-    {area:0, y:1070, x:1320, width:600, height:997, path:'lowerleftunova/FloccesyTown.png'},
-    {area:0, y:1060, x:350, width:978, height:595, path: 'lowerleftunova/Route19.png'},
-    {area:0, y:1440, x:3090, width:1319, height:676, path:'lowerleftunova/VirbankCity.png'},
-    {area:0, y:1036, x:1915, width:1185, height:1080, path:'lowerleftunova/Route20.png'}  
-    {area:0, y:, x:, width:, height:, path:},
+    {area:0, y:0, x:0, width:877, height:1115, path:'maps/lowerleftunova/AspertiaCity.png'},
+    {area:0, y:1070, x:1320, width:600, height:997, path:'maps/lowerleftunova/FloccesyTown.png'},
+    {area:0, y:1060, x:350, width:978, height:595, path: 'maps/lowerleftunova/Route19.png'},
+    {area:0, y:1048, x:3100, width:693, height:481, path:'maps/lowerleftunova/Virbank Complex (Outside).png'},
+    {area:0, y:1440, x:3090, width:1319, height:676, path:'maps/lowerleftunova/VirbankCity.png'},
+    {area:0, y:393, x:3097, width:693, height:807, path:'maps/lowerleftunova/Virbank Complex (Inside).png '}, 
+    {area:0, y:1036, x:1915, width:1185, height:1080, path:'maps/lowerleftunova/Route20.png'}, 
+    
+    
+    
 ]
 export default mapData;
 
