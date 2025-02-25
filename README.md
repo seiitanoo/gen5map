@@ -5,7 +5,8 @@ an w.i.p interactive map of the Unova region!
 Interactive Maps for gen 1,3 and 4 have already been created, its time to add the 5th generation!
 
 Here's Our current Checklist for things to get acomplished:
-- Per map Highlighting
+- ~~Per map Highlighting~~
+- Map layers
 - Item Icons
 - Entrance Icons
 
