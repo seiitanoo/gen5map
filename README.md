@@ -18,8 +18,8 @@ Things that are planned So far:
 - seasons!! (later date)
 
 Contributing
-- Huge thank you to #Brin7853 For helping me figure out how to do this. Thank you to [GuyPerfect](https://www.vgmaps.com/forums/index.php?topic=1954.0) as well. Without the custom emulator he created, this project would not be possible.
+- Huge thank you to #Brin7853 For helping me figure out how to properly map these areas. Thank you to [GuyPerfect](https://www.vgmaps.com/forums/index.php?topic=1954.0) as well. Without the custom emulator he modified, this project would not be possible.
 
 License
 
-Map files published under this repository are subject to a [CC BY-NC-SA 2.5 license](https://creativecommons.org/licenses/by-nc-sa/2.5/) via [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/Bulbapedia:Copyrights). Some of the Map Images are procured by me.
+Map files published under this repository are subject to a [CC BY-NC-SA 2.5 license](https://creativecommons.org/licenses/by-nc-sa/2.5/) via [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/Bulbapedia:Copyrights). Some of the Map Images are procured by #quentin9999. Subject to GameFREAK.
