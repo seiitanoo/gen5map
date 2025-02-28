@@ -38,6 +38,7 @@ export function borderLayer(Layer){
         });
     };
 };
+
 // remove layer function
 export function removeLayer(){
     Canvas.eachLayer(function (layer) {

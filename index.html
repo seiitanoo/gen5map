@@ -12,8 +12,15 @@
             width: auto; 
             height: 93vh;
             border: 1px solid black;
-            background: rgb(0, 0, 0);
+            background-image: url('maps/site/background.png');
+            background-size: cover; /* or contain, or specific dimensions */
+            background-repeat: repeat;
+            animation: moveBackground 50s linear infinite;
         }
+        @keyframes moveBackground {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
+}
         #map .leaflet-image-layer {
     image-rendering: pixelated
 }
@@ -33,7 +40,7 @@
     </style>
 </head>
 
-<body>
+
     <button id="button1">Overworld</button>
     <button id="button2">Cave</button>
     <div id ="area">Area Name: </div>
