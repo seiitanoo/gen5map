@@ -5,22 +5,19 @@ import {Canvas, borderLayer, removeLayer} from './global.js';
 import Map from './mapdata.js';
 
 // init
-let OverWorld = Map().OverworldLayer;
-let Cave = Map().CaveLayer;
+let OverWorld = Map().OverworldLayer; let Cave = Map().CaveLayer;
 
-drawMap(OverWorld); 
-borderLayer(OverWorld);
+//default layer
+drawMap(OverWorld); borderLayer(OverWorld);
 
-//buttons
-    document.getElementById('button1').addEventListener('click', function() {
+//button functions
+document.querySelectorAll('button').forEach(button => {
+    button.addEventListener('click', function() {
         removeLayer();
-        drawMap(OverWorld);
-        borderLayer(OverWorld);
-});
-document.getElementById('button2').addEventListener('click', function() {
-    removeLayer();
-    drawMap(Cave);
-    borderLayer(Cave);
+        const layer = button.id === 'button1' ? OverWorld : Cave;
+        drawMap(layer);
+        borderLayer(layer);
+    });
 });
    //comment this out if you Don't want the debug function
    debug(Canvas);
