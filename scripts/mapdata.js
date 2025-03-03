@@ -1,6 +1,6 @@
 //mapdata.js Created on 2-19-2025 By quentin99999
-//Explanation: Called to script.js to make the code look much cleaner. Also makes it easy to see
-// which part of the code is fucked up lmao.
+//Explanation: Holds the arrays for the seperate layers. Probably gonna have to refactor this to something else, maybe make more specific arrays.
+// 
 
 //Array Explanation
 
@@ -32,9 +32,7 @@ var Map = () => {
       ],
       CaveLayer: [
         { area: 0, y: 0, x: 0, width: 0, height: 0, path: '' }
-      ], // You can define CaveLayer here if needed
-      // Add other layers as needed
-    };
-  };
+      ], 
+    }};
   
   export default Map;

@@ -8,14 +8,42 @@
   
     <!-- #map .leaflet class ensures that the images when zoomed are still pixel perfect!! important!! -->
     <style>
+        
+        
+/* Styling for the header */
+     .header {
+        position: fixed;
+        top: 0;
+        width: 99%;
+        display: flex;
+        justify-content: auto;
+        align-items: center;
+        margin-bottom: 4px;
+    }
+            #button1, #button2 {
+                display:flex;
+                margin-left: 4px;
+            }
+            #area {
+                display:block;
+                margin-left: auto;
+            }
+            
+        
+/* Styling for the map */
+
+.mapstuff {
+        display: auto;
+}
         #map {
-            width: auto; 
-            height: 93vh;
+            position: absolute;
+            top: 60px; /* Adjust based on header height */
+            bottom: 2px; /* Adjust based on footer height */
+            width: 99%;
+            height: calc(100vh - 120px); /* Adjust based on header and footer height */
             border: 1px solid black;
             background-image: url('maps/site/background.png');
-            background-size:auto;
-            background-repeat: repeat;
-            animation: moveBackground 5s linear infinite;
+            animation: moveBackground 15s linear infinite;
             image-rendering: pixelated;
         }
         @keyframes moveBackground {
@@ -25,28 +53,64 @@
         #map .leaflet-image-layer {
     image-rendering: pixelated
 }
-        #area {
-            display: flex;
-            justify-content: center;
-            width: auto;
-            border: 1px solid black;
-            margin: 5px;
-            background: rgb(189, 189, 189);
-        }
-        #coords{
-            display: flex;
-            justify-content: center;
-        }
+
+/* Styling for the footer */
+    .footer{
+        position: fixed;
+        bottom: 0;
+        width: 99%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 4px; 
+    }
+            #version-switch{
+                display: flex;
+                justify-content: left;
+                }
+            #coords{
+                display: flex;
+                
+                justify-content: center;   
+                }
+            
+            #layer-display{
+                display:flex;
+                justify-content: right;
+            }
+
+
+/* own thing */
+ #version-display{
+                display:flex;
+                justify-content: center
+                ;
+            }
 
     </style>
 </head>
-    <button id="button1">Overworld</button>
-    <button id="button2">Cave</button>
-    <div id ="area">Area Name: </div>
-    <!--Creating a div to hold the map-->
-    <div id="map"></div>
-    <!--Div to display mouse coordinates -->
-    <div id="coords">y: 0, x: 0</div>
+
+
+    <!---header div-->
+    <div class="header">
+        <button id="button1">Overworld</button>
+        <button id="button2">Cave</button>
+        <div id ="area"></div>
+    </div>
+    <!--- map div-->
+
+        <div id="map"></div>
+
+   
+    <!---footer div-->
+    <div class="footer">
+           
+            <button id="version-switch">Switch Version</button>
+            <div id="coords">y: 0, x: 0</div>
+            <div id ="layer-display">Current Layer: Overworld</div>
+        </div>
+
+        <div id="version-display"> Current Version: White 2</div>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script type ="module"src="./scripts/script.js"></script>
 </body>

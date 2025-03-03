@@ -1,5 +1,5 @@
-import mapData from './mapdata.js'
-
+//debug.js Created on 2-19-2025 By quentin99999
+//Explanation: All the random debug stuff I might need.
 export default function debug(map){
 // Debugging feature: Displaying mouse coordinates
 map.on('mousemove', function(e) {
