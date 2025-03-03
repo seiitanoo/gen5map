@@ -40,19 +40,21 @@ document.getElementById('version-switch').addEventListener('click', function() {
     }
 });
 // switch layer
-function LayerSwitch(layer, backgroundImage, versionText) {
+function LayerSwitch(layer, backgroundImage, versionText, pinLayer) {
     currentLayer = layer;
-    removeLayer();  drawMap(layer); drawBorder(layer); map.style.backgroundImage = backgroundImage;
+    currentPinLayer = pinLayer;
+    removeLayer();  drawMap(layer); drawBorder(layer); drawPins(pinLayer);
+     map.style.backgroundImage = backgroundImage;
  // display current layer
     document.getElementById('layer-display').innerHTML = versionText;
 }
 
 
 document.getElementById('button2').addEventListener('click', function() {
-    LayerSwitch(Map().CaveLayer, map.style.backgroundImage, "Current Layer: Cave");
+    LayerSwitch(Map().CaveLayer, map.style.backgroundImage, "Current Layer: Cave", Pins().CaveLayer);
 });
 document.getElementById('button1').addEventListener('click', function() {
-    LayerSwitch(Map().OverworldLayer, map.style.backgroundImage, "Current Layer: Overworld");
+    LayerSwitch(Map().OverworldLayer, map.style.backgroundImage, "Current Layer: Overworld",Pins().OverworldLayer);
 });
 
 
