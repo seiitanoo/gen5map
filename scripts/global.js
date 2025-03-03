@@ -3,9 +3,10 @@
 // drawn from here- Canvas var needs to be in the same file as all the draw functions. 
 
 
-//map settings
+//leaflet map and settings
 export var Canvas = L.map('map', {crs: L.CRS.Simple,zoomSnap: .125, minZoom: -2.5, maxZoom: 2.5, maxBoundsViscosity: 1.0});
 
+//bounds function
 function findBounds(image){
 const bounds = [[image.y, image.x], [image.y + image.height, image.x + image.width]];
 return bounds;
@@ -30,16 +31,15 @@ export default function drawMap(Layer){
     Canvas.setMaxBounds(combinedBounds);
 }
 
-
-// border function
-export function borderLayer(Layer){
+// draw border function
+export function drawBorder(Layer){
     for (const image of Layer) {
         const border = L.rectangle(findBounds(image), { color: 'transparent', weight: 0.0, imageData: image}).addTo(Canvas);
         border.on({
             mouseover: function(e) {
                 e.target.setStyle({color: 'rgba(255, 255, 255, 1)', weight: 3, fillOpacity: 0.0});
                 document.getElementById('area').innerHTML = "Area: " + e.target.options.imageData.path;},
-                mouseout: function(e) {
+            mouseout: function(e) {
                 e.target.setStyle({color: 'transparent',weight: 0, fillOpacity: 0.1});
                 document.getElementById('area').innerHTML = "";
             }
@@ -47,10 +47,39 @@ export function borderLayer(Layer){
     };
 };
 
+// draw pins
+export function drawPins(Layer, itemFilter, areaFilter) {
+    //rudimentary pin filtering. Probably will change
+var pin = Layer;
+    if (areaFilter !== null) {
+        for (pin of Layer) {
+            if (pin.type === areaFilter) {
+                pin.ENABLED = false;
+            }
+        }
+    }
+        if (itemFilter !== null) {
+            for (pin of Layer) {
+                if (pin.type === itemFilter) {
+                    pin.ENABLED = false;
+                }
+            }
+        }
+        //draw pins
+for (pin of Layer){
+    if (pin.ENABLED){
+        const iconClass = pin.HIDDEN ? 'grayscale-icon' : '';
+        const marker = L.marker([pin.y, pin.x], {icon: L.icon({iconUrl: pin.icon, iconSize: [32, 32], className: iconClass})}).addTo(Canvas);
+        marker.bindPopup(pin.text).openTooltip();
+    }
+}};
+
+
+
 // remove layer function
 export function removeLayer(){
     Canvas.eachLayer(function (layer) {
-        if(layer instanceof L.ImageOverlay || layer instanceof L.Rectangle) {
+        if(layer instanceof L.ImageOverlay || layer instanceof L.Rectangle || layer instanceof L.Marker) {
             Canvas.removeLayer(layer);
         }
     })};
