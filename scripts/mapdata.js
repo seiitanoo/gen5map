@@ -31,7 +31,7 @@ var Map = () => {
         // central unova
       ],
       CaveLayer: [
-        { area: 0, y: 0, x: 0, width: 0, height: 0, path: '' }
+        { area: 5, y: 3035, x: 1419, width: 560, height: 864, path: 'maps/specialareas/Pledge Grove.png' }
       ], 
     }};
   

@@ -18,7 +18,7 @@
         display: flex;
         justify-content: auto;
         align-items: center;
-        margin-bottom: 4px;
+        margin-top: 4px;
     }
             #button1, #button2 {
                 display:flex;
@@ -37,8 +37,8 @@
 }
         #map {
             position: absolute;
-            top: 60px; /* Adjust based on header height */
-            bottom: 2px; /* Adjust based on footer height */
+            top: 50px; /* Adjust based on header height */
+            bottom: 0px; /* Adjust based on footer height */
             width: 99%;
             height: calc(100vh - 120px); /* Adjust based on header and footer height */
             border: 1px solid black;
@@ -82,6 +82,9 @@
 
 /* own thing */
  #version-display{
+    position: fixed;
+            top: 0;
+            width: 100%;
                 display:flex;
                 justify-content: center
                 ;
@@ -108,9 +111,10 @@
             <button id="version-switch">Switch Version</button>
             <div id="coords">y: 0, x: 0</div>
             <div id ="layer-display">Current Layer: Overworld</div>
+            <div id="version-display"> Current Version: White 2</div>
         </div>
 
-        <div id="version-display"> Current Version: White 2</div>
+       
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script type ="module"src="./scripts/script.js"></script>
 </body>

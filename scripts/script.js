@@ -26,14 +26,18 @@ document.getElementById('version-switch').addEventListener('click', function() {
 });
 
 function LayerSwitch(layer, backgroundImage, versionText) {
+    removeLayer();
     currentLayer = layer;
-    drawMap(currentLayer);
-    borderLayer(currentLayer);
+    drawMap(layer); borderLayer(layer);
     map.style.backgroundImage = backgroundImage;
-    document.getElementById('version-display').innerHTML = versionText;
+    document.getElementById('layer-display').innerHTML = versionText;
 }
-document.getElementById('cave-switch').addEventListener('click', function() {
+document.getElementById('button2').addEventListener('click', function() {
     LayerSwitch(Map().CaveLayer, map.style.backgroundImage, "Current Layer: Cave");
+});
+
+document.getElementById('button1').addEventListener('click', function() {
+    LayerSwitch(Map().OverworldLayer, map.style.backgroundImage, "Current Layer: Overworld");
 });
 
 
