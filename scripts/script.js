@@ -2,9 +2,9 @@
 // Cleaned tf out of this code hard.
 //Explanation: Main Script
 
-import debug, { CheckMapArray, CheckPinsArray } from './ui/debug.js';
+import debug, { CheckMapArray, CheckPinsArray, } from './ui/debug.js';
 import drawMap from './global.js';
-import {Canvas, drawBorder, removeLayer, drawPins} from './global.js';
+import {Canvas, drawBorder, removeLayer, drawPins, getCurrentZoomLevel} from './global.js';
 import Map from './data/mapdata.js';
 import Pins from './data/pindata.js';
 

@@ -3,6 +3,7 @@
 
 import Map from "../data/mapdata.js";
 import Pins from "../data/pindata.js";
+import Canvas from "../global.js";
 
 export default function debug(map){
 // Debugging feature: Displaying mouse coordinates
