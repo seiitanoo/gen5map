@@ -5,17 +5,34 @@ an w.i.p interactive map of the Unova region!
 Interactive Maps for gen 1,3 and 4 have already been created, its time to add the 5th generation!
 
 Here's Our current Checklist for things to get acomplished:
-- ~~Per map Highlighting~~
-- Map layers
-- Item Icons
-- Entrance Icons
+* Major Goals are marked with !!.
 
-Things that are planned So far:
-- implement a better encounter table (Than the previous interactive maps)
-- be able to view information about npcs (redirect to [bulbapedia](https://bulbapedia.bulbagarden.net/) or [serebii](https://www.serebii.net/))
-- item locations
-- alternate black/white rooms
-- seasons!! (later date)
+# Phase 1 (Start)
+- ~~Per map Highlighting~~
+- ~~Map layers~~
+- Icon System
+
+# Phase 2 (Alpha)
+- !! - Implement encounter table (Better Than the previous interactive maps)
+- custom icons
+- per layer selection
+
+# Phase 3 (Beta)
+- !! - complete map with all the neccesary layers
+- !! - fully import item data (redirect to [bulbapedia](https://bulbapedia.bulbagarden.net/) or [serebii](https://www.serebii.net/))
+- !! - fully import trainer data 
+
+# Phase 4 (Release)
+- css stuff! make it look pretty!
+- polish
+- fix minor bugs!
+
+# Phase 5 (Future)
+- Alternate Black and White rooms
+- Alternate season selection
+- Day and Night stuff
+
+
 
 Contributing
 - Huge thank you to #Brin7853 For helping me figure out how to properly map these areas. Thank you to [GuyPerfect](https://www.vgmaps.com/forums/index.php?topic=1954.0) as well. Without the custom emulator he modified, this project would not be possible.
