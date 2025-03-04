@@ -24,9 +24,25 @@ var Map = () => {
         { area: 8, y: 1036, x: 1915, width: 1185, height: 1080, path: 'maps/lowerleftunova/Route20.png' },
         { area: 9, y: -400, x: 1850, width: 785, height: 522, path: 'maps/specialareas/Liberty Garden.png' },
         { area: 10, y: 3035, x: 1419, width: 560, height: 864, path: 'maps/specialareas/Pledge Grove.png' },
-    
-        
         // central unova
+        {area: 11, y: 1600, x: 5900, width: 3531, height: 2910,path: ' maps/centralunova/Castelia_City_Map_BWFULL.png'},
+        {area: 12, y: 4500, x: 6687, width: 1185, height: 1869, path: 'maps/centralunova/Route 4FULL.png'},
+        {area: 13, y: 6232, x: 4938, width: 1683, height: 1221, path: 'maps/centralunova/Desert ResortFULL.png'  },
+        {area: 14, y: 5931, x: 6291, width: 1000, height:  476, path: 'maps/centralunova/Outside Desert ResortFULL.png'},
+        {area: 15, y: 6380, x: 7384, width:  325, height:  866, path: 'maps/centralunova/Join AvenueFULL.png'},
+        {area: 16, y: 7250, x: 6683, width: 2648, height: 1019, path: 'maps/centralunova/Nimbasa CityFULL.png'},
+        {area: 17, y: 7661, x: 5580, width: 1091, height:  547, path: 'maps/centralunova/Route 5FULL.png' },
+        {area: 18, y: 7768, x: 7920, width: 1046, height:  509, path: 'maps/centralunova/Route 16FULL.png' },
+        //{area: 19, y: ,x: , width: ,height: ,path: }
+
+        /*
+        
+        ,
+        {area: 20, y: ,x: , width: ,height: ,path: },
+        {area: 21, y: ,x: , width: ,height: ,path: },
+*/
+        
+        
       ],
       CaveLayer: [], 
     }};

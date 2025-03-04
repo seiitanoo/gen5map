@@ -3,6 +3,13 @@
 
 var Icon = () =>  {
     return {
+
+customPins: [
+{name: "Entrance", path: './pins/entrance.png' }
+
+
+],
+
 Pokeballs: [
 {name:"Poké ball", path:'./pins/pokeball.png'},
 {name:"Great Ball", path:'./pins/greatball.png'},

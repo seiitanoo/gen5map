@@ -6,7 +6,7 @@ import { maps } from "./script.js";
 //leaflet map and settings
 export var Canvas = L.map('map', 
     {crs: L.CRS.Simple,zoomSnap: .125,
-         minZoom: -2.5, 
+         minZoom: -5.0, 
          maxZoom: 2.5, 
          maxBoundsViscosity: 1.0,
          zoomAnimation: false,
@@ -15,7 +15,6 @@ export var Canvas = L.map('map',
          markerZoomAnimation: true
         });
 
-        L.control.layers(maps).addTo(Canvas);
 //bounds function
 function findBounds(image){
 const bounds = [[image.y, image.x], [image.y + image.height, image.x + image.width]];
@@ -38,7 +37,7 @@ export default function drawMap(Layer){
     // Fit map to combined bounds
     Canvas.fitBounds(combinedBounds);
     // Set maximum bounds to prevent endless scrolling
-    Canvas.setMaxBounds(combinedBounds);
+
 }
 
 // draw border function
@@ -50,13 +49,13 @@ export function drawBorder(Layer) {
         const border = L.rectangle(bounds, { color: 'transparent', weight: 0.0, imageData: image }).addTo(Canvas);
         rectangles.push({ border, bounds });
     }
-    Canvas.on('mousemove', function(e) {
+    Canvas.on('click', function(e) {
         let found = false;
         for (const { border, bounds } of rectangles) {
             const latLng = e.latlng;
             if (latLng.lat >= bounds[0][0] && latLng.lat <= bounds[1][0] &&
                 latLng.lng >= bounds[0][1] && latLng.lng <= bounds[1][1]) {
-                border.setStyle({ color: 'rgba(255, 255, 255, 1)', weight: 3, fillOpacity: 0.0 });
+                border.setStyle({ color: 'rgba(255, 255, 255, 1)', weight: 3, fillOpacity: 0.2, dashArray: '5, 5'});
                 document.getElementById('area').innerHTML = "Area: " + border.options.imageData.path;
                 found = true;
             } else {
