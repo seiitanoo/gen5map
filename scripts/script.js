@@ -11,6 +11,7 @@ import Pins from './data/pindata.js';
 //init default layer
 var currentLayer = Map().OverworldLayer;
 var currentPinLayer = Pins().OverworldLayer;
+export var maps = [Map().OverworldLayer, Map().CaveLayer];
 drawMap(currentLayer); drawBorder(currentLayer);
 drawPins(currentPinLayer)
 

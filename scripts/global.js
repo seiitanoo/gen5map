@@ -2,10 +2,20 @@
 //Explanation: Created to consolodate all the map drawing functions. Mostly everything related to map drawing should be 
 // drawn from here- Canvas var needs to be in the same file as all the draw functions. 
 
-
+import { maps } from "./script.js";
 //leaflet map and settings
-export var Canvas = L.map('map', {crs: L.CRS.Simple,zoomSnap: .125, minZoom: -2.5, maxZoom: 2.5, maxBoundsViscosity: 1.0});
+export var Canvas = L.map('map', 
+    {crs: L.CRS.Simple,zoomSnap: .125,
+         minZoom: -2.5, 
+         maxZoom: 2.5, 
+         maxBoundsViscosity: 1.0,
+         zoomAnimation: false,
+         zoomAnimationThreshold: 4,
+         fadeAnimation: true,
+         markerZoomAnimation: true
+        });
 
+        L.control.layers(maps).addTo(Canvas);
 //bounds function
 function findBounds(image){
 const bounds = [[image.y, image.x], [image.y + image.height, image.x + image.width]];
