@@ -5,7 +5,11 @@ var Icon = () =>  {
     return {
 
 customPins: [
-{name: "Entrance", path: './pins/entrance.png' }
+{name: "Entrance", path: './pins/entrance.png' },
+{name: "Pokemon Center", path: './pins/pkmncenter.png'},
+{name: "Gym", path: './pins/gym.png'},
+{name: "Cave", path: './pins/cave.png'},
+{name: "Route", path: './pins/route.png'}
 
 
 ],

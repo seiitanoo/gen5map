@@ -94,7 +94,12 @@ for (pin of InputLayer){
         marker.bindTooltip(pin.text);
     }
 }};
-
+export function drawEntrancePins(InputLayer, area){;
+  for (const entrance of InputLayer){ 
+        const marker = L.marker([entrance.y, entrance.x], {icon: L.icon({iconUrl: entrance.icon, iconSize: [38, 38]})}).addTo(Canvas);
+        marker.bindTooltip(entrance.text);
+};
+};
 // remove layer function
 export function removeLayer(){
     Canvas.eachLayer(function (layer) {

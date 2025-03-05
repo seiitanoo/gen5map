@@ -3,18 +3,18 @@
 //Explanation: Main Script
 
 import debug, { CheckMapArray, CheckPinsArray, } from './ui/debug.js';
-import drawMap from './global.js';
+import drawMap, { drawEntrancePins } from './global.js';
 import {Canvas, drawBorder, removeLayer, drawPins } from './global.js';
 import Map from './data/mapdata.js';
 import Pins from './data/pindata.js';
+import EntrancePins from './data/entrancedata.js';
 
 //init default layer
 var currentLayer = Map().OverworldLayer;
 var currentPinLayer = Pins().OverworldLayer;
+var currentEntranceLayer = EntrancePins().Entrances;
 export var maps = [Map().OverworldLayer, Map().CaveLayer];
-drawMap(currentLayer); drawBorder(currentLayer);
-drawPins(currentPinLayer)
-
+drawMap(currentLayer); drawBorder(currentLayer); drawPins(currentPinLayer); drawEntrancePins(currentEntranceLayer);
 
 
 
@@ -44,7 +44,7 @@ document.getElementById('version-switch').addEventListener('click', function() {
 function LayerSwitch(layer, backgroundImage, versionText, pinLayer) {
     currentLayer = layer;
     currentPinLayer = pinLayer;
-    removeLayer();  drawMap(layer); drawBorder(layer); drawPins(pinLayer);
+    removeLayer();  drawMap(layer); drawBorder(layer); drawPins(pinLayer); 
      map.style.backgroundImage = backgroundImage;
  // display current layer
     document.getElementById('layer-display').innerHTML = versionText;

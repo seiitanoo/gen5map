@@ -19,42 +19,7 @@ var Pins = () => {
          
          
          //--Entrances
-         { y: 214, x: 255, 
-          area: Map().OverworldLayer[0].area, 
-          type: 1,  
-          icon: Icon().customPins[0].path, 
-          text: Icon().customPins[0].name,
-          ENABLED: true, HIDDEN: false},
-          { y: 214, x: 422, 
-            area: Map().OverworldLayer[0].area, 
-            type: 1,  
-            icon: Icon().customPins[0].path, 
-            text: Icon().customPins[0].name,
-            ENABLED: true, HIDDEN: false},
-            { y: 568, x: 277, 
-              area: Map().OverworldLayer[0].area, 
-              type: 1,  
-              icon: Icon().customPins[0].path, 
-              text: Icon().customPins[0].name,
-              ENABLED: true, HIDDEN: false},
-              { y: 543, x: 439, 
-                area: Map().OverworldLayer[0].area, 
-                type: 1,  
-                icon: Icon().customPins[0].path, 
-                text: Icon().customPins[0].name,
-                ENABLED: true, HIDDEN: false},
-                { y: 786, x: 649, 
-                  area: Map().OverworldLayer[0].area, 
-                  type: 1,  
-                  icon: Icon().customPins[0].path, 
-                  text: Icon().customPins[0].name,
-                  ENABLED: true, HIDDEN: false},
-                  { y: 1026, x: 535, 
-                    area: Map().OverworldLayer[0].area, 
-                    type: 1,  
-                    icon: Icon().customPins[0].path, 
-                    text: "To Route 19",
-                    ENABLED: true, HIDDEN: false},
+        
 
 
          // Route 19
@@ -69,6 +34,7 @@ var Pins = () => {
 
       CaveLayer: [],
 
+      RoomLayer:[]
 
     }};
 
