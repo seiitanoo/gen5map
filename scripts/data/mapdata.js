@@ -32,16 +32,20 @@ var Map = () => {
         {area: 15, y: 6380, x: 7384, width:  325, height:  866, path: 'maps/centralunova/Join AvenueFULL.png'},
         {area: 16, y: 7250, x: 6683, width: 2648, height: 1019, path: 'maps/centralunova/Nimbasa CityFULL.png'},
         {area: 17, y: 7661, x: 5580, width: 1091, height:  547, path: 'maps/centralunova/Route 5FULL.png' },
-        {area: 18, y: 7768, x: 7920, width: 1046, height:  509, path: 'maps/centralunova/Route 16FULL.png' },
-        //{area: 19, y: ,x: , width: ,height: ,path: }
+        {area: 18, y:8233, x: 8171, width: 704, height: 952, path:'maps/centralunova/Lostlorn ForestFULL.png' },
+        {area: 19, y: 7768, x: 7920, width: 1046, height:  509, path: 'maps/centralunova/Route 16FULL.png' },
+        {area: 20, y: 7700, x: 2909,  width: 2630, height: 677, path:'maps/centralunova/Driftveil_Drawbridge_BW.png' },
+        //area 21 other bridge (rightside)
 
-        /*
+        //upper left unova
+       {area: 22, y: 7697, x: 1090, width: 1764, height: 925, path: 'maps/upperleftunova/Driftveil CityFULL.png'},
+       {area: 23, y: 6830, x: 1045, width: 1200, height: 868, path: 'maps/upperleftunova/PWTFULL.png'},
+       {area: 24, y: 9130, x: -597, width: 1094, height: 1434, path: 'maps/upperleftunova/Misltron cityFULL.png'},
+       {area: 25, y: 8175, x: -96, width: 1186, height: 1449, path: 'maps/upperleftunova/Route6.png'},
+       {area: 26, y: 10098, x: -96, width: 1186, height: 1419, path: 'maps/upperleftunova/Route7.png'},
+       
         
-        ,
-        {area: 20, y: ,x: , width: ,height: ,path: },
-        {area: 21, y: ,x: , width: ,height: ,path: },
-*/
-        
+
         
       ],
       CaveLayer: [], 

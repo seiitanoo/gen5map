@@ -16,18 +16,18 @@ export var Canvas = L.map('map',
         });
 
 //bounds function
-function findBounds(image){
-const bounds = [[image.y, image.x], [image.y + image.height, image.x + image.width]];
+function findBounds(png){
+const bounds = [[png.y, png.x], [png.y + png.height, png.x + png.width]];
 return bounds;
 };
 
 //drawing map function
-export default function drawMap(Layer){
+export default function drawMap(InputLayer){
    //loop adds images to map layer
-    for (const image of Layer) {
-      L.imageOverlay(image.path, findBounds(image), {crs: L.CRS.Simple, width:image.width, height:image.height}).addTo(Canvas)};
+    for (const png of InputLayer) {
+      L.imageOverlay(png.path, findBounds(png), {crs: L.CRS.Simple, width: png.width, height: png.height}).addTo(Canvas)};
       // bounds calculation constraining to the smallest and largest values of infinity and -infinity. Oh and its a loop btw.
-      const combinedBounds = Layer.reduce((acc, image) => {
+      const combinedBounds = InputLayer.reduce((acc, image) => {
         const [[minY, minX], [maxY, maxX]] = findBounds(image);
         return [
             [Math.min(acc[0][0], minY), Math.min(acc[0][1], minX)],
@@ -41,12 +41,12 @@ export default function drawMap(Layer){
 }
 
 // draw border function
-export function drawBorder(Layer) {
+export function drawBorder(InputLayer) {
     const rectangles = [];
 
-    for (const image of Layer) {
-        const bounds = findBounds(image);
-        const border = L.rectangle(bounds, { color: 'transparent', weight: 0.0, imageData: image }).addTo(Canvas);
+    for (const png of InputLayer) {
+        const bounds = findBounds(png);
+        const border = L.rectangle(bounds, { color: 'transparent', weight: 0.0, pngData: png }).addTo(Canvas);
         rectangles.push({ border, bounds });
     }
     Canvas.on('click', function(e) {
@@ -56,7 +56,7 @@ export function drawBorder(Layer) {
             if (latLng.lat >= bounds[0][0] && latLng.lat <= bounds[1][0] &&
                 latLng.lng >= bounds[0][1] && latLng.lng <= bounds[1][1]) {
                 border.setStyle({ color: 'rgba(255, 255, 255, 1)', weight: 3, fillOpacity: 0.2, dashArray: '5, 5'});
-                document.getElementById('area').innerHTML = "Area: " + border.options.imageData.path;
+                document.getElementById('area').innerHTML = "Area: " + border.options.pngData.area;
                 found = true;
             } else {
                 border.setStyle({ color: 'transparent', weight: 0, fillOpacity: 0.1 });
@@ -69,25 +69,25 @@ export function drawBorder(Layer) {
 }
 
 // draw pins function
-export function drawPins(Layer, itemFilter, areaFilter) {
+export function drawPins(InputLayer, itemFilter, areaFilter) {
     //rudimentary pin filtering. Probably will change
-var pin = Layer;
+var pin = InputLayer;
     if (areaFilter !== null) {
-        for (pin of Layer) {
+        for (pin of InputLayer) {
             if (pin.type === areaFilter) {
                 pin.ENABLED = false;
             }
         }
     }
         if (itemFilter !== null) {
-            for (pin of Layer) {
+            for (pin of InputLayer) {
                 if (pin.type === itemFilter) {
                     pin.ENABLED = false;
                 }
             }
         }
         //draw pins
-for (pin of Layer){
+for (pin of InputLayer){
     if (pin.ENABLED){
         const iconClass = pin.HIDDEN ? 'grayscale-icon' : '';
         const marker = L.marker([pin.y, pin.x], {icon: L.icon({iconUrl: pin.icon, iconSize: [32, 32], className: iconClass})}).addTo(Canvas);
