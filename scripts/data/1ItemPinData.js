@@ -6,6 +6,7 @@
 import Icon from './icondata.js';
 import Map from './mapdata.js';
 import Rooms from './roomdata.js';
+//reup
 var Pins = () => { 
   return {
       OverworldLayer: [
