@@ -2,7 +2,7 @@
 //Explanation: All the random debug stuff I might need.
 
 import Map from "../data/mapdata.js";
-import Pins from "../data/_ItemPinData.js";
+import Pins from "../data/1ItemPinData.js";
 import Canvas from "../global.js";
 
 export default function debug(map){
