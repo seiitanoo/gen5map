@@ -2,8 +2,8 @@
 //Explanation: Created to consolodate all the map drawing functions. Mostly everything related to map drawing should be 
 // drawn from here- Canvas var needs to be in the same file as all the draw functions. 
 import Rooms from './data/roomdata.js';
-import Pins from './data/_ItemPinData.js';
-import EntrancePins from './data/_EntrancePinData.js';
+import Pins from './data/1ItemPinData.js';
+import EntrancePins from './data/1EntrancePinData.js';
 //init leaflet map and settings
 export var Canvas = L.map('map', 
     {crs: L.CRS.Simple,zoomSnap: .125,
@@ -24,6 +24,7 @@ return bounds;
 
 //drawing map function
 export default function drawMap(InputLayer) {
+    console.log(InputLayer);
     for (const png of InputLayer) {
         L.imageOverlay(png.path, findBounds(png), {crs: L.CRS.Simple, width: png.width, height: png.height,}).addTo(Canvas);
       }
@@ -86,18 +87,27 @@ for (const pin of InputLayer){
 
 //draw entrance pins
 export function drawEntrancePins(InputLayer){
+    console.log(InputLayer);
   for (var entrance of InputLayer){ 
         const marker = L.marker([entrance.y, entrance.x], {icon: L.icon({iconUrl: entrance.icon, iconSize: [38, 38]})}).addTo(Canvas);
         marker.bindTooltip(entrance.text);
-        if (entrance.jump !== undefined){
-            //on click function. very complicated
-        marker.on('click', function(e) {
-var newInputLayer = () => {return {room: [Rooms[entrance.jump]]}};
-var newPinLayer = () => {return {pin: Pins().RoomLayer[entrance.jump]}};
-var newEntancePinLayer = () => {return {entrance: EntrancePins().RoomLayer[entrance.jump]}}
-    LayerSwitch(newInputLayer().room, null, null, newPinLayer().pin, newEntancePinLayer().entrance)
-})};
-
+        
+        
+        if (typeof entrance.jump === 'function'){
+            marker.on('click', function(e) {
+                console.log(`this is outputting!! it works!`);
+            })
+      } 
+      
+      else if (entrance.jump === 'number'){
+      //on click function. very complicated
+    
+      marker.on('click', function(e) {
+        var newInputLayer = () => {return {room: [Rooms[entrance.jump]]}};
+        var newPinLayer = () => {return {pin: Pins().RoomLayer[entrance.jump]}};
+        var newEntancePinLayer = () => {return {entrance: EntrancePins().RoomLayer[entrance.jump]}}
+            LayerSwitch(newInputLayer().room, null, null, newPinLayer().pin, newEntancePinLayer().entrance);
+        })};
 }};
 
 
