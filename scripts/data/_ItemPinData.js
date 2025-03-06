@@ -5,7 +5,7 @@
 // type: look at item array to find type (gonna get rmemoved)
 import Icon from './icondata.js';
 import Map from './mapdata.js';
-
+import Rooms from './roomdata.js';
 var Pins = () => { 
   return {
       OverworldLayer: [
@@ -24,7 +24,7 @@ var Pins = () => {
 
          // Route 19
          { y: 1308, x: 1127, 
-          area: Map().OverworldLayer[3].area, 
+          area: Map().OverworldLayer[4].area, 
           type: 1,  
           icon: Icon().Pokeballs[0].path, 
           text: Icon().Pokeballs[0].name,
@@ -33,10 +33,29 @@ var Pins = () => {
       
 
       CaveLayer: [],
+RoomLayer:[
+     //aspertia city
+     // 0: routepipe
+      [
+        { y: 70, x: 156, area: Rooms[0].area, type: 1, icon: Icon().Pokeballs[0].path, text: Icon().Pokeballs[0].name, ENABLED: true, HIDDEN: false},
+        { y: 144, x: 42, area: Rooms[0].area, type: 1,  icon: Icon().Pokeballs[0].path, text: Icon().Pokeballs[0].name, ENABLED: true, HIDDEN: false},
+      ],      
+    //1: pokemon center
+    [
 
-      RoomLayer:[]
 
-    }};
+
+    ]
+  ]
+      
+      
+      
+  
+
+
+
+    };
+};
+
 
     export default Pins;
-

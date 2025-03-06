@@ -1,13 +1,13 @@
 //mapdata.js Created on 3-5-2025 By quentin99999
 //created to hold the locations and redirs of the entrance pins. 
 // TO DO
+/// jump = location in array in roomdata.js
 import Icon from './icondata.js';
 import Map from './mapdata.js';
-
 var EntrancePins = () => { 
     return {
        OverworldLayer: [
-        { y: 214, x: 255, 
+        {   y: 214, x: 255, 
             area: Map().OverworldLayer[0].area, 
             type: 1,  
             icon: Icon().customPins[0].path, 
@@ -44,12 +44,34 @@ var EntrancePins = () => {
                       area: Map().OverworldLayer[0].area, 
                       type: 1,  
                       icon: Icon().customPins[4].path, 
-                      text: "To Route 19",
+                      text: "Aspertia City </br>To </br>Route 19",
+                      jump: 0,
+                      // zoomx, zoomy
                       ENABLED: true, HIDDEN: false},   
 
        ],
     CaveLayer: [],
-    RoomLayer: [],
+    RoomLayer: [
+      //aspertia city
+// 0: routepipe
+      [{ y: 231, x: 85, 
+        area: Map().OverworldLayer[0].area, 
+        type: 1,  
+        icon: Icon().customPins[0].path, 
+        text: Icon().customPins[0].name,
+        ENABLED: true, HIDDEN: false},
+        { y: 11, x: 81, 
+          area: Map().OverworldLayer[0].area, 
+          type: 1,  
+          icon: Icon().customPins[0].path, 
+          text: Icon().customPins[0].name,
+          ENABLED: true, HIDDEN: false},]
+// 1: pokemongym
+
+
+
+
+    ]
 }
 }
 export default EntrancePins;

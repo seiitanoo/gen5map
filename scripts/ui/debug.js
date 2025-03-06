@@ -2,7 +2,7 @@
 //Explanation: All the random debug stuff I might need.
 
 import Map from "../data/mapdata.js";
-import Pins from "../data/pindata.js";
+import Pins from "../data/_ItemPinData.js";
 import Canvas from "../global.js";
 
 export default function debug(map){
@@ -14,13 +14,14 @@ map.on('mousemove', function(e) {
     document.getElementById('coords').innerHTML = "y: " + latlng.lat.toFixed(0) + ", x: " + latlng.lng.toFixed(0);  
 });
 
-// Adds a marker on the map when clicked, which displays the coordinates of the pin
-map.on('click', function(e) {
-    var latlng = e.latlng;
-    let coordinates = "y: " + latlng.lat.toFixed(0) + "<br>x: " + latlng.lng.toFixed(0); // Format coordinate
-    L.marker(e.latlng).addTo(map).bindPopup(coordinates); // Use coordinates in popup
+// Adds a marker on the map when right clicked, which displays the coordinates of the pin
+map.on('contextmenu', function(e) {
+  var latlng = e.latlng;
+  L.marker(latlng).addTo(map)
+      .bindPopup("Coordinates: y: " + latlng.lat.toFixed(5) + ", x: " + latlng.lng.toFixed(5))
 });
-}
+};
+
 
 // display display contents of arrays (good to check for bad data)
 export function CheckMapArray(){

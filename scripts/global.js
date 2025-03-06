@@ -1,9 +1,10 @@
 //mapdata.js Created on 2-19-2025 By quentin99999
 //Explanation: Created to consolodate all the map drawing functions. Mostly everything related to map drawing should be 
 // drawn from here- Canvas var needs to be in the same file as all the draw functions. 
-
-import { maps } from "./script.js";
-//leaflet map and settings
+import Rooms from './data/roomdata.js';
+import Pins from './data/_ItemPinData.js';
+import EntrancePins from './data/_EntrancePinData.js';
+//init leaflet map and settings
 export var Canvas = L.map('map', 
     {crs: L.CRS.Simple,zoomSnap: .125,
          minZoom: -5.0, 
@@ -22,22 +23,26 @@ return bounds;
 };
 
 //drawing map function
-export default function drawMap(InputLayer){
-   //loop adds images to map layer
+export default function drawMap(InputLayer) {
     for (const png of InputLayer) {
-      L.imageOverlay(png.path, findBounds(png), {crs: L.CRS.Simple, width: png.width, height: png.height}).addTo(Canvas)};
-      // bounds calculation constraining to the smallest and largest values of infinity and -infinity. Oh and its a loop btw.
-      const combinedBounds = InputLayer.reduce((acc, image) => {
-        const [[minY, minX], [maxY, maxX]] = findBounds(image);
-        return [
+        L.imageOverlay(png.path, findBounds(png), {crs: L.CRS.Simple, width: png.width, height: png.height,}).addTo(Canvas);
+      }
+  
+      const combinedBounds = InputLayer.reduce(
+        (acc, image) => {
+          const [[minY, minX], [maxY, maxX]] = findBounds(image);
+          return [
             [Math.min(acc[0][0], minY), Math.min(acc[0][1], minX)],
-            [Math.max(acc[1][0], maxY), Math.max(acc[1][1], maxX)]
-        ];
-    }, [[Infinity, Infinity], [-Infinity, -Infinity]]);
-    // Fit map to combined bounds
-    Canvas.fitBounds(combinedBounds);
-    // Set maximum bounds to prevent endless scrolling
-
+            [Math.max(acc[1][0], maxY), Math.max(acc[1][1], maxX)],
+          ];
+        },
+        [
+          [Infinity, Infinity],
+          [-Infinity, -Infinity],
+        ]
+      );
+  
+      Canvas.fitBounds(combinedBounds);
 }
 
 // draw border function
@@ -69,42 +74,56 @@ export function drawBorder(InputLayer) {
 }
 
 // draw pins function
-export function drawPins(InputLayer, itemFilter, areaFilter) {
-    //rudimentary pin filtering. Probably will change
-var pin = InputLayer;
-    if (areaFilter !== null) {
-        for (pin of InputLayer) {
-            if (pin.type === areaFilter) {
-                pin.ENABLED = false;
-            }
-        }
-    }
-        if (itemFilter !== null) {
-            for (pin of InputLayer) {
-                if (pin.type === itemFilter) {
-                    pin.ENABLED = false;
-                }
-            }
-        }
-        //draw pins
-for (pin of InputLayer){
+export function drawPins(InputLayer) {
+for (const pin of InputLayer){
     if (pin.ENABLED){
         const iconClass = pin.HIDDEN ? 'grayscale-icon' : '';
-        const marker = L.marker([pin.y, pin.x], {icon: L.icon({iconUrl: pin.icon, iconSize: [32, 32], className: iconClass})}).addTo(Canvas);
+        const marker = L.marker([pin.y, pin.x], {icon: L.icon({iconUrl: pin.icon, iconSize: [38, 38], className: iconClass})}).addTo(Canvas);
         marker.bindTooltip(pin.text);
     }
 }};
-export function drawEntrancePins(InputLayer, area){;
-  for (const entrance of InputLayer){ 
+
+
+//draw entrance pins
+export function drawEntrancePins(InputLayer){
+  for (var entrance of InputLayer){ 
         const marker = L.marker([entrance.y, entrance.x], {icon: L.icon({iconUrl: entrance.icon, iconSize: [38, 38]})}).addTo(Canvas);
         marker.bindTooltip(entrance.text);
+        if (entrance.jump !== undefined){
+            //on click function. very complicated
+        marker.on('click', function(e) {
+var newInputLayer = () => {return {room: [Rooms[entrance.jump]]}};
+var newPinLayer = () => {return {pin: Pins().RoomLayer[entrance.jump]}};
+var newEntancePinLayer = () => {return {entrance: EntrancePins().RoomLayer[entrance.jump]}}
+    LayerSwitch(newInputLayer().room, null, null, newPinLayer().pin, newEntancePinLayer().entrance)
+})};
+
+}};
+
+
+   
+
+
+//switch layer function
+export function LayerSwitch(InputLayer, backgroundImage, layerText, InputPinLayer, InputEntranceLayer) {
+    removeLayer();  drawMap(InputLayer); drawBorder(InputLayer); drawPins(InputPinLayer); drawEntrancePins(InputEntranceLayer); 
+    document.getElementById('layer-display').innerHTML = layerText;
 };
-};
+
 // remove layer function
 export function removeLayer(){
-    Canvas.eachLayer(function (layer) {
-        if(layer instanceof L.ImageOverlay || layer instanceof L.Rectangle || layer instanceof L.Marker) {
-            Canvas.removeLayer(layer);
+    Canvas.eachLayer(function (InputLayer) {
+        if(InputLayer instanceof L.ImageOverlay || InputLayer instanceof L.Rectangle || InputLayer instanceof L.Marker) {
+            Canvas.removeLayer(InputLayer);
         }
     })};
 
+
+    /*
+switch on click function
+input data (figure it out)
+
+const entranceicons (placeholder) = inputentranceicons
+
+
+    */
