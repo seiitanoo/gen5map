@@ -6,8 +6,8 @@ import debug, { CheckMapArray, CheckPinsArray, } from './ui/debug.js';
 import drawMap, { drawEntrancePins } from './global.js';
 import {Canvas, drawBorder, removeLayer, drawPins, LayerSwitch } from './global.js';
 import Map from './data/mapdata.js';
-import Pins from './data/_ItemPinData.js';
-import EntrancePins from './data/_EntrancePinData.js';
+import Pins from './data/1ItemPinData.js';
+import EntrancePins from './data/1EntrancePinData.js';
 
 //init default layer
 var currentLayer = Map().OverworldLayer;
