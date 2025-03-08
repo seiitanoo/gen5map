@@ -2,21 +2,20 @@
 // Cleaned tf out of this code hard.
 //Explanation: Main Script
 
-import debug, { CheckMapArray, CheckPinsArray, } from './ui/debug.js';
-import drawMap, { drawEntrancePins } from './global.js';
-import {Canvas, drawBorder, removeLayer, drawPins, LayerSwitch } from './global.js';
+
 import Map from './data/mapdata.js';
-import Pins from './data/1ItemPinData.js';
-import EntrancePins from './data/1EntrancePinData.js';
+import Pins from './data/pindata.js';
+import Entrance from './data/entrancedata.js'
+import swapAll, {Canvas} from './logic/mapdraw.js';
+import debug from './ui/debug.js';
 
 //init default layer
-var currentLayer = Map().OverworldLayer;
-var currentPinLayer = Pins().OverworldLayer;
-var currentEntranceLayer = EntrancePins().OverworldLayer;
 
-drawMap(currentLayer); drawBorder(currentLayer); drawPins(currentPinLayer); drawEntrancePins(currentEntranceLayer);
+export var currentLayer = Map[0];
+export var currentPinLayer = Pins[0];
+export var currentEntranceLayer = Entrance[0];
 
-
+swapAll(currentLayer, currentPinLayer, currentEntranceLayer);
 
 
 
@@ -46,15 +45,15 @@ document.getElementById('version-switch').addEventListener('click', function() {
 
 
 document.getElementById('button2').addEventListener('click', function() {
-    LayerSwitch(Map().CaveLayer, map.style.backgroundImage, "Current Layer: Cave", Pins().CaveLayer, EntrancePins().CaveLayer);
+    currentLayer = Map[1]; currentPinLayer = Pins[1]; currentEntranceLayer = Entrance[1];
+    swapAll(currentLayer,currentPinLayer, currentEntranceLayer);
 });
 document.getElementById('button1').addEventListener('click', function() {
-    LayerSwitch(Map().OverworldLayer, map.style.backgroundImage, "Current Layer: Overworld",Pins().OverworldLayer, EntrancePins().OverworldLayer);
+    currentLayer = Map[0]; currentPinLayer = Pins[0]; currentEntranceLayer = Entrance[0];
+    swapAll(currentLayer, currentPinLayer,currentEntranceLayer);
 });
-
 
 
    //comment this out if you Don't want the debug function
    debug(Canvas);
- // CheckMapArray();
-//CheckPinsArray();
+ 

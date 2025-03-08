@@ -73,11 +73,6 @@
                 justify-content: center;   
                 }
             
-            #layer-display{
-                display:flex;
-                justify-content: right;
-            }
-
 
 /* own thing */
  
@@ -87,24 +82,26 @@
 
 
     <!---header div-->
-    <div class="header">
+ <div class="header">
         <button id="button1">Overworld</button>
         <button id="button2">Cave</button>
         <div id ="area"></div>
         <div id="version-display"> Current Version: White 2</div>
     </div>
+
+
     <!--- map div-->
 
         <div id="map"></div>
 
    
     <!---footer div-->
-    <div class="footer">
+
+
+ <div class="footer">
             <button id="version-switch">Switch Version</button>
             <div id="coords">y: 0, x: 0</div>
-            <div id ="layer-display">Current Layer: Overworld</div>
         </div>
-
        
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script type ="module"src="./scripts/script.js"></script>
