@@ -10,12 +10,12 @@ Here's Our current Checklist for things to get acomplished:
 # Phase 1 (Start)
 - ~~Per map Highlighting~~
 - ~~Map layers~~
-- Icon System
+- ~~Icon System~~
 
 # Phase 2 (Alpha)
 - !! - Implement encounter table (Better Than the previous interactive maps)
-- custom icons
-- per layer selection
+- ~~custom icons~~
+- ~~per layer selection~~ 
 
 # Phase 3 (Beta)
 - !! - complete map with all the neccesary layers
