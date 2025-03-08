@@ -7,101 +7,31 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   
     <!-- #map .leaflet class ensures that the images when zoomed are still pixel perfect!! important!! -->
-    <style>
-        
-        
-/* Styling for the header */
-     .header {
-        width: 100%;
-        display: flex;
-        justify-content: auto;
-        align-items: center;
-        background-color: white;
-    }
-            #button1, #button2 {
-                display:flex;
-                margin-left: 4px;
-            }
-            #area {
-                display:block;
-                margin-left: auto;
-            }
-            #version-display{
-                display:flex;
-                margin-left: auto;
-            }
-/* Styling for the map */
-
-
-#map {
-
-    width: 100vw; /* Use viewport width */
-    height: 100vh; /* Use viewport height */
-    background-image: url('maps/site/background.png');
-    background-repeat: repeat;
-    background-size: cover;
-    animation: moveBackground 120s linear infinite;
-    image-rendering: pixelated;
-    position: fixed; /* Fix it to the viewport */
-    top: 0;
-    left: 0;
-    z-index: -9999; /* Ensure it's on top of other elements */
-}
-    @keyframes moveBackground {
-        0% { background-position: 0 0; }
-        100% { background-position: 0 -100%; }
-    }
-/*hidden icon greyscale*/
-.grayscale-icon {
-    filter: grayscale(100%);
-}
-/* Styling for the footer */
-    .footer{
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: white;
-    }
-            #version-switch{
-                display: flex;
-                justify-content: left;
-                }
-            #coords{
-                display: flex;
-                
-                justify-content: center;   
-                }
-            
-
-/* own thing */
- 
-
-    </style>
+    <link rel="stylesheet" href="style.css"/>
 </head>
-
-
-    <!---header div-->
- <div class="header">
-        <button id="button1">Overworld</button>
-        <button id="button2">Cave</button>
-        <div id ="area"></div>
-        <div id="version-display"> Current Version: White 2</div>
-    </div>
-
+    <!--Button Containers-->
+    <div id="menu">
+        <div id="popout">
+            <button id="button1">Overworld</button>
+            <button id="button2">Cave</button>
+        </div>
+    </div> 
+    
+    <div id="area"></div>
+    <div id="version-display"> Current Version: White 2</div>
 
     <!--- map div-->
 
         <div id="map"></div>
-
    
     <!---footer div-->
 
 
  <div class="footer">
-            <button id="version-switch">Switch Version</button>
-            <div id="coords">y: 0, x: 0</div>
-        </div>
+        <button id="version-switch">Switch Version</button>
+        <div id="coords">y: 0, x: 0</div>
+        <table id="thupidtable" ><tr>hi</tr></table>
+</div>
        
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script type ="module"src="./scripts/script.js"></script>

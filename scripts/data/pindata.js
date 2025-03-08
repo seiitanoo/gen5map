@@ -7,7 +7,7 @@ import Icons from "./icondata.js";
 // 0
 const OverworldLayer = [
     //aspertia city
-    {area: 0, y: 147, x: 684, icon: Icons[0][0].image, text: Icons[0][0].name, HIDDEN: false},
+    {area: 0, y: 147, x: 684, icon: Icons[0][0].image, text: Icons[0][0].name, HIDDEN: true},
 ];
 
 

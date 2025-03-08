@@ -1,0 +1,86 @@
+/* Styling for the header */
+#menu {
+    /*empty for now*/
+}
+        #button1 #button2 {
+            display:flex;
+        }
+        #button1 {
+            margin-left: 50px;
+            margin-top: 10px;
+            width: 75px;
+            height: 35px;
+            border-radius: 10px;
+        }
+        #button2 {
+            margin-left: 15px;
+            margin-top: 10px;
+            width: 75px;
+            height: 35px;
+            border-radius: 10px;
+            background-image: url(images/cavebackground.png);
+            background-size: cover;
+            color: black;
+            text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;            
+        }
+
+
+        #area {
+            display:block;
+            margin-left: auto;
+        }
+        #version-display{
+            display:flex;
+            margin-left: auto;
+        }
+/* Styling for the map */
+
+#map {
+width: 100vw; /* Use viewport width */
+height: 100vh; /* Use viewport height */
+background-image: url('maps/site/background.png');
+background-repeat: repeat;
+background-size: cover;
+animation: moveBackground 120s linear infinite;
+image-rendering: pixelated;
+position: fixed; /* Fix it to the viewport */
+top: 0;
+left: 0;
+z-index: -9999; /* Ensure it's on top of other elements */
+}
+@keyframes moveBackground {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 -100%; }
+}
+/*hidden icon greyscale*/
+.grayscale-icon {
+filter: grayscale(100%);
+}
+/* Styling for the footer */
+.footer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+}
+        #version-switch{
+            display: flex;
+            justify-content: left;
+            }
+        #coords{
+            display: flex;
+            
+            justify-content: center;   
+            }
+        
+
+/* own thing */
+
+#thupidtable {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #ddd;
+    margin-top: 150px;
+}
