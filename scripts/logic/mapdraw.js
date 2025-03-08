@@ -40,7 +40,7 @@ function drawBorder(InputLayer) {
     const rectangles = InputLayer.map(png => {const border = L.rectangle(findBounds(png), { color: 'transparent', weight: 0.0, pngData: png }).addTo(Canvas); return { border, png };});
 
     Canvas.on('click', function(e) {
-        let clickedRectangle = rectangles.find(({ border, png }) => {
+        let clickedRectangle = rectangles.find(({ png }) => {
             //check to see if over an item
             const latLng = e.latlng;
             const bounds = findBounds(png); 
@@ -53,6 +53,7 @@ function drawBorder(InputLayer) {
             clickedRectangle.border.setStyle({ color: 'rgba(255, 255, 255, 1)', weight: 3, fillOpacity: 0.2, dashArray: '5, 5' });
             document.getElementById('area').innerHTML = "Area: " + clickedRectangle.border.options.pngData.area;
         } else {
+            
             document.getElementById('area').innerHTML = "";
         }
     });
@@ -63,7 +64,7 @@ function drawPins(Input_PinLayer){
     if (Input_PinLayer !== undefined){
         for (const pin of Input_PinLayer){
             const iconClass = pin.HIDDEN ? 'grayscale-icon' : '';
-            pin.text = pin.HIDDEN ? "Hidden: " + pin.text : pin.text; 
+            if (pin.HIDDEN === true){}
             const marker = L.marker([pin.y, pin.x], {icon: L.icon({iconUrl: pin.icon, iconSize: [38, 38], className: iconClass})}).addTo(Canvas);
             marker.bindTooltip(pin.text);
          }}};
