@@ -19,9 +19,14 @@ export var Canvas = L.map('map',
         });
 
 //drawing map function/ strict datastructure of array [array {data},{data}]] or this function will not work
+
  function drawMap(InputLayer) {
+    
     if (InputLayer !== undefined){
-for (const png of InputLayer) {L.imageOverlay(png.path, findBounds(png), {crs: L.CRS.Simple, width: png.width, height: png.height,}).addTo(Canvas);}
+for (const png of InputLayer){ 
+    const overlay = L.imageOverlay(png.path, findBounds(png), {crs: L.CRS.Simple, width: png.width, height: png.height, opacity: 0}).addTo(Canvas); 
+   fadeIn(overlay);
+}
       const combinedBounds = InputLayer.reduce(
         (acc, image) => {
           const [[minY, minX], [maxY, maxX]] = findBounds(image);
@@ -29,8 +34,7 @@ for (const png of InputLayer) {L.imageOverlay(png.path, findBounds(png), {crs: L
                   [Math.max(acc[1][0], maxY), Math.max(acc[1][1], maxX)]];
               }, [[Infinity, Infinity],[-Infinity, -Infinity],]
  );
-       Canvas.fitBounds(combinedBounds);
-    }};
+       Canvas.fitBounds(combinedBounds);}};
 
 
 
@@ -63,9 +67,14 @@ function drawBorder(InputLayer) {
 function drawPins(Input_PinLayer){
     if (Input_PinLayer !== undefined){
         for (const pin of Input_PinLayer){
+            if (pin.HIDDEN === true) {
+                if (!pin.text.endsWith("❗(Hidden)")) { // Check if the up arrow is already there
+                    pin.text += "❗(Hidden)";
+                }
+              }
             const iconClass = pin.HIDDEN ? 'grayscale-icon' : '';
             if (pin.HIDDEN === true){}
-            const marker = L.marker([pin.y, pin.x], {icon: L.icon({iconUrl: pin.icon, iconSize: [38, 38], className: iconClass})}).addTo(Canvas);
+            const marker = L.marker([pin.y, pin.x], {icon: L.icon({iconUrl: pin.icon, iconSize: [38, 38], className: iconClass,}), opacity: pin.HIDDEN ? 0.80 : 1}).addTo(Canvas);
             marker.bindTooltip(pin.text);
          }}};
 
@@ -74,6 +83,16 @@ function drawPins(Input_PinLayer){
 function drawEntrance(Input_EntranceLayer) {
 if (Input_EntranceLayer !== undefined) {
 for (const entrance of Input_EntranceLayer) {
+    if (entrance.out === true) {
+        if (!entrance.text.endsWith(" 🔼")) { // Check if the up arrow is already there
+            entrance.text += " 🔼";
+        }
+      }
+      if (entrance.out === false) {
+        if (!entrance.text.endsWith(" 🔽")) { // Check if the up arrow is already there
+          entrance.text += " 🔽";
+        }
+      }
 const marker = L.marker([entrance.y, entrance.x], {icon: L.icon({iconUrl: entrance.icon, iconSize: [38, 38]})}).addTo(Canvas);
  marker.bindTooltip("To " + entrance.text);
  if (entrance.out === false) { // logic for entering
@@ -88,7 +107,23 @@ currentLayer == Map[entrance.tolayer]; currentPinLayer == Pins[entrance.tolayer]
 swapAll(currentLayer, currentPinLayer, currentEntranceLayer)
 Canvas.setView([entrance.zoomy,entrance.zoomx],entrance.zoomlevel);})
 }}}};
-        
+// fade in animation for map
+function fadeIn(imageOverlay, duration = 25) {
+    let opacity = 0;
+    const interval = .5;
+    const steps = duration / interval;
+    const increment = 1 / steps;
+
+    const fadeInterval = setInterval(() => {
+        opacity += increment;
+        imageOverlay.setOpacity(opacity);
+
+        if (opacity >= 1) {
+            clearInterval(fadeInterval);
+            imageOverlay.setOpacity(1);
+        }
+    }, interval);
+}
 
 // swap all layers at the same time
 export default function swapAll(InputLayer, Input_PinLayer, Input_EntranceLayer){
@@ -96,6 +131,7 @@ export default function swapAll(InputLayer, Input_PinLayer, Input_EntranceLayer)
     if (InputLayer !== undefined){drawMap(InputLayer); drawBorder(InputLayer); drawEntrance(Input_EntranceLayer);}
     if (Input_PinLayer !== undefined){drawPins(Input_PinLayer);}
 };
+
 
 // individual swapfunctions
 function swapToRoom (InputLayer, Input_PinLayer, Input_EntranceLayer){removeAllLayers();singleDrawMap(InputLayer); drawPins(Input_PinLayer); drawEntrance(Input_EntranceLayer);}
@@ -109,5 +145,5 @@ function removeMap(){Canvas.eachLayer(function (InputLayer) {if(InputLayer insta
 //bounds function
 function findBounds(png){ const bounds = [[png.y, png.x], [png.y + png.height, png.x + png.width]]; return bounds;};
 //draws a singular map piece strict data of array --> what its looking for a sigular data point. so {data}
-function singleDrawMap(InputLayer) {const bounds = findBounds(InputLayer);{L.imageOverlay(InputLayer.path,bounds, {crs: L.CRS.Simple, width: InputLayer.width, height: InputLayer.height}).addTo(Canvas);} Canvas.fitBounds(bounds);};
+function singleDrawMap(InputLayer) {const bounds = findBounds(InputLayer); const overlay = L.imageOverlay(InputLayer.path,bounds, {crs: L.CRS.Simple, width: InputLayer.width, height: InputLayer.height}).addTo(Canvas); Canvas.fitBounds(bounds); fadeIn(overlay);} 
 

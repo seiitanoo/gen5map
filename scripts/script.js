@@ -29,13 +29,13 @@ swapAll(currentLayer, currentPinLayer, currentEntranceLayer);
 
 //version switch
 const map = document.getElementById('map');
-map.style.backgroundImage = "url('maps/site/background.png')";
+map.style.backgroundImage = "url('media/site/background.png')";
 document.getElementById('version-switch').addEventListener('click', function() {
     if (map.style.backgroundImage.includes('background.png')) {
-        map.style.backgroundImage = "url('maps/site/background2.png')";
+        map.style.backgroundImage = "url('media/site/background2.png')";
          document.getElementById('version-display').innerHTML = "Current Version: Black 2"
     } else {
-        map.style.backgroundImage = "url('maps/site/background.png')";
+        map.style.backgroundImage = "url('media/site/background.png')";
         document.getElementById('version-display').innerHTML = "Current Version: White 2"
     }
 });

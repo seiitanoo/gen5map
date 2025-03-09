@@ -57,10 +57,12 @@ let RoomLayer =
   //2 - 0  Aspertia City
 [
     {id: 0, y:0,x: 0, width: 166,  height: 301, path: 'maps/rooms/Aspertia Citiy/Pipe To Route 19.png' },
-    {id: 1, y:0, x: 0, width: 600,  height: 997,  path: 'maps/lowerleftunova/Poke Center.png' },
-    {id: 2},
-    {id: 3},
-    {id: 4},
+    {id: 1, y:0, x: 0, width: 250, height: 301,  path: 'maps/rooms/Aspertia Citiy/Poke Center.png' },
+    {id: 2, y:0, x: 0, width: 256, height: 493, path: 'maps/rooms/Aspertia Citiy/1st House.png'},
+    {id: 3, y:0, x: 0, width: 256, height: 466, path:'maps/rooms/Aspertia Citiy/5th House.png' },
+    {id: 4, y:0, x: 0, width: 256, height: 447, path: 'maps/rooms/Aspertia Citiy/Hughs House.png' },
+    {id: 5, y:0, x: 0, width: 319, height: 195, path:'maps/rooms/Aspertia Citiy/Moms House.png' },
+    {id: 6, y:0, x: 0, width: 426, height: 939, path: 'maps/rooms/Aspertia Citiy/Outside (Gym).png'},
 ],
 
     
