@@ -8,7 +8,8 @@ import {currentLayer, currentPinLayer, currentEntranceLayer } from "../script.js
 //init leaflet map and settings
 
 export var Canvas = L.map('map', 
-    {crs: L.CRS.Simple,zoomSnap: .125,
+    {attributionControl: false, zoomControl:false,
+        crs: L.CRS.Simple,zoomSnap: .125,
          minZoom: -5.0, 
          maxZoom: 2.5, 
          maxBoundsViscosity: 1.0,
@@ -17,11 +18,11 @@ export var Canvas = L.map('map',
          fadeAnimation: true,
          markerZoomAnimation: true
         });
-
+       L.control.attribution({position:'bottomleft', prefix: 'Made with <a href="https://leafletjs.com/" target="_blank">Leaflet</a> | <br>created by quentin9999 and seiitanoo'}).addTo(Canvas);
+        new L.Control.Zoom({ position: 'bottomleft' }).addTo(Canvas);
+        
 //drawing map function/ strict datastructure of array [array {data},{data}]] or this function will not work
-
  function drawMap(InputLayer) {
-    
     if (InputLayer !== undefined){
 for (const png of InputLayer){ 
     const overlay = L.imageOverlay(png.path, findBounds(png), {crs: L.CRS.Simple, width: png.width, height: png.height, opacity: 0}).addTo(Canvas); 
@@ -32,8 +33,7 @@ for (const png of InputLayer){
           const [[minY, minX], [maxY, maxX]] = findBounds(image);
           return [[Math.min(acc[0][0], minY), Math.min(acc[0][1], minX)],
                   [Math.max(acc[1][0], maxY), Math.max(acc[1][1], maxX)]];
-              }, [[Infinity, Infinity],[-Infinity, -Infinity],]
- );
+              }, [[Infinity, Infinity],[-Infinity, -Infinity],]);
        Canvas.fitBounds(combinedBounds);}};
 
 
@@ -83,16 +83,8 @@ function drawPins(Input_PinLayer){
 function drawEntrance(Input_EntranceLayer) {
 if (Input_EntranceLayer !== undefined) {
 for (const entrance of Input_EntranceLayer) {
-    if (entrance.out === true) {
-        if (!entrance.text.endsWith(" 🔼")) { // Check if the up arrow is already there
-            entrance.text += " 🔼";
-        }
-      }
-      if (entrance.out === false) {
-        if (!entrance.text.endsWith(" 🔽")) { // Check if the up arrow is already there
-          entrance.text += " 🔽";
-        }
-      }
+    if (entrance.out === true) {if (!entrance.text.endsWith(" 🔼")) { entrance.text += " 🔼";}}
+      if (entrance.out === false) {if (!entrance.text.endsWith(" 🔽")) {entrance.text += " 🔽";}}
 const marker = L.marker([entrance.y, entrance.x], {icon: L.icon({iconUrl: entrance.icon, iconSize: [38, 38]})}).addTo(Canvas);
  marker.bindTooltip("To " + entrance.text);
  if (entrance.out === false) { // logic for entering
@@ -113,11 +105,9 @@ function fadeIn(imageOverlay, duration = 25) {
     const interval = .5;
     const steps = duration / interval;
     const increment = 1 / steps;
-
     const fadeInterval = setInterval(() => {
         opacity += increment;
         imageOverlay.setOpacity(opacity);
-
         if (opacity >= 1) {
             clearInterval(fadeInterval);
             imageOverlay.setOpacity(1);
@@ -131,8 +121,6 @@ export default function swapAll(InputLayer, Input_PinLayer, Input_EntranceLayer)
     if (InputLayer !== undefined){drawMap(InputLayer); drawBorder(InputLayer); drawEntrance(Input_EntranceLayer);}
     if (Input_PinLayer !== undefined){drawPins(Input_PinLayer);}
 };
-
-
 // individual swapfunctions
 function swapToRoom (InputLayer, Input_PinLayer, Input_EntranceLayer){removeAllLayers();singleDrawMap(InputLayer); drawPins(Input_PinLayer); drawEntrance(Input_EntranceLayer);}
 function swapMap(InputLayer){removeMap(); drawMap (InputLayer);} 

@@ -6,7 +6,7 @@
 const Pokeballs = 
 [
 {name:"Poké ball", image:'./pins/balls/pokeball.png'},
-{name:"Great Ball", image:'./pins/balls/greatball.png'},
+{name:"Great Ball", image:'./pins/balls/great.png'},
 {name:"Ultra Ball", image:'./pins/balls/ultraball.png'},
 {name:"Master Ball", image:'./pins/balls/masterball.png'},
 {name:"Timer Ball", image:'./pins/balls/timerball.png'},
@@ -23,6 +23,9 @@ const Pokeballs =
 const BattleItems = [];
 
 //2
+const Berries = [];
+
+//3
 const HealingItems =  
 [
     {name:"Potion", image:'./pins/healing/potion.png'},
@@ -37,15 +40,14 @@ const HealingItems =
     {name:"Elixer", image:'./pins/healing/elixer.png'},
     {name:"Max Elixer", image:'./pins/healing/maxelixer.png'},
 ];
-
-//3
-const Berries = [];
-
 //4
+const Special = [];
+
+//5
 const TMItems = []; 
 
 
 
 
-const Icons = [Pokeballs, BattleItems, HealingItems, Berries, TMItems];
+const Icons = [Pokeballs, BattleItems, Berries, HealingItems, Special,TMItems];
 export default Icons;
