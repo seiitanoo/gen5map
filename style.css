@@ -33,6 +33,29 @@
             display:flex;
             margin-left: auto;
         }
+
+        #tableContainer {
+            display: none;
+            
+            position:fixed; /* Position table container absolutely */
+            bottom: 10px;
+            right: 10px;
+            background-color: white;
+            padding: 10px;
+            border: 1px solid #ccc;
+            z-index: 10000; /* Ensure table is on top of map tiles */
+            max-height: 50vh;
+            overflow-y: auto;
+          }
+          table {
+            border-collapse: collapse;
+            width: 100%;
+          }
+          th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+          }
 /* Styling for the map */
 
 #map {
@@ -40,9 +63,9 @@ width: 100vw; /* Use viewport width */
 height: 100vh; /* Use viewport height */
 background-image: url('media/site/background.png');
 background-repeat: repeat;
+position: fixed;
 animation: moveBackground 120s linear infinite;
 image-rendering: pixelated;
-position: fixed; /* Fix it to the viewport */
 top: 0;
 left: 0;
 z-index: -9999; /* Ensure it's on top of other elements */

@@ -8,7 +8,7 @@ import Pins from './data/pindata.js';
 import Entrance from './data/entrancedata.js'
 import swapAll, {Canvas} from './logic/mapdraw.js';
 import debug from './ui/debug.js';
-
+import drawTable, {table1,table2} from './data/tabletest.js';
 //init default layer
 
 export var currentLayer = Map[0];
@@ -45,9 +45,15 @@ document.getElementById('version-switch').addEventListener('click', function() {
 
 
 document.getElementById('button2').addEventListener('click', function() {
-    currentLayer = Map[1]; currentPinLayer = Pins[1]; currentEntranceLayer = Entrance[1];
-    swapAll(currentLayer,currentPinLayer, currentEntranceLayer);
-});
+    const tableContainer = document.getElementById('tableContainer');
+    if (tableContainer) {
+      if (tableContainer.style.display === 'none' || tableContainer.style.display === '') {
+        tableContainer.style.display = 'block'; // Or 'inline', 'inline-block', etc.
+      } else {
+        tableContainer.style.display = 'none';
+      }
+    }
+  });
 document.getElementById('button1').addEventListener('click', function() {
     currentLayer = Map[0]; currentPinLayer = Pins[0]; currentEntranceLayer = Entrance[0];
     swapAll(currentLayer, currentPinLayer,currentEntranceLayer);
@@ -56,4 +62,4 @@ document.getElementById('button1').addEventListener('click', function() {
 
    //comment this out if you Don't want the debug function
    debug(Canvas);
- 
+ drawTable(table1, "tableContainer", 0);
