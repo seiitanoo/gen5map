@@ -5,7 +5,7 @@ import Map from "../data/mapdata.js";
 import Pins from "../data/pindata.js";
 import Entrance from "../data/entrancedata.js";
 import {currentLayer, currentPinLayer, currentEntranceLayer } from "../script.js";
-import drawTable, { table1,table2 } from '../data/tabletest.js';
+
 //init leaflet map and settings
 
 export var Canvas = L.map('map', 

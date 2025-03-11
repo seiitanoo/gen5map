@@ -8,7 +8,7 @@ import Pins from './data/pindata.js';
 import Entrance from './data/entrancedata.js'
 import swapAll, {Canvas} from './logic/mapdraw.js';
 import debug from './ui/debug.js';
-import drawTable, {table1,table2} from './data/tabletest.js';
+
 //init default layer
 
 export var currentLayer = Map[0];
@@ -62,4 +62,4 @@ document.getElementById('button1').addEventListener('click', function() {
 
    //comment this out if you Don't want the debug function
    debug(Canvas);
- drawTable(table1, "tableContainer", 0);
+ //drawTable(table1, "tableContainer", 0);
