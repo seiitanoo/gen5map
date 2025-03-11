@@ -19,9 +19,9 @@ Here is our current Timeline:
 - Implement encounter table (Better Than the previous interactive maps): 🟨
 - (!!) fully import item icon data: 🟨
 - (!!) Complete The Map (Rooms, Cave, Overworld): ❌
-- css stuff! make it look pretty!
-- polish
-- fix minor bugs!
+- css stuff! make it look pretty!: 🟨
+- polish: ❌
+- fix minor bugs!: ❌
 
 # Future Features:
 - Alternate Black and White rooms: ⌛
