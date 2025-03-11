@@ -2,7 +2,7 @@
 //by quentin99999
 // the data in this table is in parity with /scripts/data/mapdata.js
 
-import Pokemon from "./pokemondata.js"
+import Pokemon from "./pokemon.js"
 
 
 let OverworldTable = 
@@ -12,6 +12,8 @@ let OverworldTable =
     {sprite: 1, name: 1, encounterrate: "70%", level: "32-40", Season:"All" },
     {sprite: 2, name: 2, encounterrate: "70%", level: "32-40", Season:"All" },
     {sprite: 3, name: 3, encounterrate: "70%", level: "32-40", Season:"All" },
+
+    
 
 ],
 //floccesy town
