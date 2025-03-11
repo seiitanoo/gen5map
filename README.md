@@ -23,7 +23,7 @@ Here is our current Timeline:
 - polish
 - fix minor bugs!
 
-# Future wanted Features:
+# Future Features:
 - Alternate Black and White rooms: ⌛
 - Alternate season selection: ⌛
 - Day and Night stuff: ⌛
