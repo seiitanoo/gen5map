@@ -3,31 +3,43 @@ A work in progress interactive map of the Unova region!
 [here](https://seiitanoo.github.io/gen5map/) is the live version of the map.
 
 Interactive Maps for gen 1,3 and 4 have already been created, its time to add the 5th generation!
+# Implemented Features
 
-Here is our current Timeline:
-# Completed Features
 ### Map Systems:
-- Per map Highlighting: ✅
-- ~Map layers (implemented, not front facing): ✅
+* Per map Highlighting: ✅
+* Map layers (implemented, not front facing): ✅
   
 ### Icon Systems:
-- Basic Icon display: ✅
-- Custom icons: ✅
-- Sprites for all 649 Pokemon (Front, Back, Shiny, and Forms): ✅
+* Basic Icon display: ✅
+  - Balls:✅
+  - Healing:✅
+  - TMS:✅
+  - Battle Items:✅
+  - Barries: ❌
+  - Held Items: ❌
+  - Mail: ❌
+  - Key Items: ❌
 
-# Current Progress:
-- Implement encounter table (Better Than the previous interactive maps): 🟨
-- (!!) fully import item icon data: 🟨
-- (!!) Complete The Map (Rooms, Cave, Overworld): ❌
-- css stuff! make it look pretty!: 🟨
-- polish: ❌
-- fix minor bugs!: ❌
+* Custom icons: ✅
+
+* Sprites for all 649 Pokemon (Front, Back, Shiny, and Forms): ✅
+  - Sprites In Database: 159
+
+* Implement encounter table (Better Than the previous interactive maps): ✅
+  - Areas Done: 0
+
+* (!!) Icon Filtering: ❌
+* (!!) fully import item icon data: 🟨
+* (!!) Complete The Map (Rooms, Cave, Overworld): ❌
+* css stuff! make it look pretty!: 🟨
+* polish: ❌
+* fix minor bugs!: ❌
 
 # Future Features:
-- Alternate Black and White rooms: ⌛
-- Alternate season selection: ⌛
-- Day and Night stuff: ⌛
-- Trainer Data: ⌛
+* Alternate Black and White rooms: ⌛
+* Alternate season selection: ⌛
+* Day and Night stuff: ⌛
+* Trainer Data: ⌛
 
 
 Contributing
