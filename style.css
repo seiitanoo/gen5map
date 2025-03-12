@@ -34,28 +34,106 @@
             margin-left: auto;
         }
 
+       
+       /* Styling for the table container */
         #tableContainer {
             display: none;
-            
+            width: auto;
             position:fixed; /* Position table container absolutely */
             bottom: 10px;
             right: 10px;
             background-color: white;
-            padding: 10px;
+            padding: 6px;
             border: 1px solid #ccc;
-            z-index: 10000; /* Ensure table is on top of map tiles */
-            max-height: 50vh;
+            max-height: 70vh;
+            max-width: 35vw;
+            z-index: 9999;
             overflow-y: auto;
           }
-          table {
+          .button-container {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Space between buttons */
+            margin-top: 10px;
+        }
+        
+        .styled-table {
+            
+            width: auto;
             border-collapse: collapse;
-            width: 100%;
-          }
-          th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-          }
+        }
+        .styled-table tr:hover {
+            background-color: #84c8c9; /* Change this color to your desired hover color */
+        }
+        
+        .styled-table th, .styled-table td {
+            padding: 0% 2px;
+            border: 1px solid #eaeaea;
+            text-align: center;
+        }
+        
+        .styled-table th {
+            width: 5vh;
+            background-color: #f4f4f4;
+        }
+        
+        /* Switch styling */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 34px;
+            height: 20px;
+        }
+        
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #000000;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 12px;
+            width: 12px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #21f356;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(14px);
+        }
+        button.close-button {
+            padding: 1px 1px; /* Adjust padding for close button */
+            font-size: 1px; /* Adjust font size for close button */
+            width: fit-content; /* Adjust the width of the close button */
+            height: fit-content; /* Adjust the height of the close button */
+            background-color: #00000000;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 /* Styling for the map */
 
 #map {
@@ -81,12 +159,3 @@ filter: grayscale(100%);
 /* Styling for the footer */
 
 
-/* own thing */
-
-#thupidtable {
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    border: 1px solid #ddd;
-    margin-top: 150px;
-}
