@@ -147,7 +147,7 @@ export default function swapAll(InputLayer, Input_PinLayer, Input_EntranceLayer)
     if (Input_PinLayer !== undefined){drawPins(Input_PinLayer);}
 };
 // individual swapfunctions
-function openTable (InputIndex,table){ tableContainer.style.display = 'block'; drawTable(InputIndex, table, 'tableContainer');};
+function openTable (InputIndex,table){ tableContainer.style.display = 'block';  drawTable(InputIndex, table, 'tableContainer');};
 function removeTable(index){tableContainer.style.display = 'none'; deleteTable(index);};
 function swapToRoom (InputLayer, Input_PinLayer, Input_EntranceLayer){removeAllLayers();singleDrawMap(InputLayer); drawPins(Input_PinLayer); drawEntrance(Input_EntranceLayer);}
 function swapMap(InputLayer){removeMap(); drawMap (InputLayer);} 
