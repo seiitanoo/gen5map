@@ -8,14 +8,18 @@
   
     <!-- #map .leaflet class ensures that the images when zoomed are still pixel perfect!! important!! -->
     <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="menu.css"/>
 </head>
     <!--Button Containers-->
-    <div id="menu">
-        <div id="popout">
+    <div id="menu-container">
+        <button class="menu-button" onclick="toggleMenu()">☰</button>
+        <div class="popout" id="popout">
             <button id="button1">Overworld</button>
             <button id="button2">Cave</button>
+            <button id="version-switch">Switch Version</button>
         </div>
     </div> 
+
     
     <div id="area"></div>
     <div id="version-display"> Current Version: White 2</div>
@@ -28,7 +32,6 @@
     <!---footer div-->
 
 
-        <button id="version-switch">Switch Version</button>
         <div id="coords">y: 0, x: 0</div>
         <table id="thupidtable" ><tr>hi</tr></table>
 
@@ -37,5 +40,6 @@
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script type ="module"src="./scripts/script.js"></script>
+    <script src="menu.js"></script>
 </body>
 </html>

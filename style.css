@@ -1,28 +1,4 @@
 /* Styling for the header */
-#menu {
-    /*empty for now*/
-}
-        #button1 #button2 {
-            display:flex;
-        }
-        #button1 {
-            margin-left: 50px;
-            margin-top: 10px;
-            width: 75px;
-            height: 35px;
-            border-radius: 10px;
-        }
-        #button2 {
-            margin-left: 15px;
-            margin-top: 10px;
-            width: 75px;
-            height: 35px;
-            border-radius: 10px;
-            background-image: url(media/site/cavebackground.png);
-            background-size: cover;
-            color: black;
-            text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;            
-        }
 
 
         #area {

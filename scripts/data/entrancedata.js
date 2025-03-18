@@ -17,13 +17,13 @@ const Route = EtrIco[4].image;
 let OverworldLayer = 
 [
     // aspertia city
-    {out: false, tolayer: 2, arrayid: 0, ItemID: 0, y: 1045, x: 533, icon: defaultE, text:"Route 19 Pipe"},
-    {out: false,tolayer: 2, arrayid: 0, ItemID: 1, y:550, x:437, icon: defaultE, text:"Poke Center"},
+    {out: false, tolayer: 2, arrayid: 0, ItemID: 0, y: 1045, x: 533, icon: Route, text:"Route 19 Pipe"},
+    {out: false,tolayer: 2, arrayid: 0, ItemID: 1, y:550, x:437, icon: Pcenter, text:"Poke Center"},
     {out: false,tolayer: 2, arrayid: 0, ItemID: 2, y:220, x:248, icon: defaultE, text:"1st House"},
     {out: false,tolayer: 2, arrayid: 0, ItemID: 3, y:782, x:642, icon: defaultE, text:"5th House"},
     {out: false,tolayer: 2, arrayid: 0, ItemID: 4, y:382, x:353, icon: defaultE, text:"Hugh's House"},
     {out: false,tolayer: 2, arrayid: 0, ItemID: 5, y:216, x:423, icon: defaultE, text:"Mom's House"},
-    {out: false,tolayer: 2, arrayid: 0, ItemID: 6, y:572, x:272, icon: defaultE, text:"Inside Trainer School (Gym)"},
+    {out: false,tolayer: 2, arrayid: 0, ItemID: 6, y:572, x:272, icon: Gym, text:"Inside Trainer School (Gym)"},
     //floccey town
 
 ];
