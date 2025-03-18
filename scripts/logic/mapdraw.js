@@ -7,8 +7,9 @@ import Entrance from "../data/entrancedata.js";
 import {currentLayer, currentPinLayer, currentEntranceLayer } from "../script.js";
 import drawTable, { deleteTable } from "./table.js";
 import OverworldTable from "../data/encounterdata/encounters.js";
-//init leaflet map and settings
 
+
+//init leaflet map and settings
 export var Canvas = L.map('map', 
     {attributionControl: false, zoomControl:false,
         crs: L.CRS.Simple,zoomSnap: .125,
@@ -25,6 +26,13 @@ export var Canvas = L.map('map',
         new L.Control.Zoom({ position: 'bottomleft' }).addTo(Canvas);
        console.info(`✅Leaflet Map Created`);
         
+ // swap all layers at the same time
+export default function swapAll(InputLayer, Input_PinLayer, Input_EntranceLayer){
+    removeAllLayers(); 
+    if (InputLayer !== undefined){drawMap(InputLayer); drawBorder(InputLayer); drawEntrance(Input_EntranceLayer);}
+    if (Input_PinLayer !== undefined){drawPins(Input_PinLayer);}
+};
+
 //drawing map function/ strict datastructure of array [array {data},{data}]] or this function will not work
  function drawMap(InputLayer) {
     if (InputLayer !== undefined){
@@ -95,7 +103,7 @@ function drawPins(Input_PinLayer){
               }
             const iconClass = pin.HIDDEN ? 'grayscale-icon' : '';
             if (pin.HIDDEN === true){}
-            const marker = L.marker([pin.y, pin.x], {icon: L.icon({iconUrl: pin.icon, iconSize: [38, 38], className: iconClass,}), opacity: pin.HIDDEN ? 0.80 : 1}).addTo(Canvas);
+            const marker = L.marker([pin.y, pin.x], {icon: L.icon({iconUrl: pin.icon, iconSize: [32, 32], className: iconClass,}), opacity: pin.HIDDEN ? 0.80 : 1}).addTo(Canvas);
             marker.bindTooltip(pin.text);
          }}};
 
@@ -106,25 +114,27 @@ if (Input_EntranceLayer !== undefined) {
 for (const entrance of Input_EntranceLayer) {
     if (entrance.out === true) {if (!entrance.text.endsWith(" 🔼")) { entrance.text += " 🔼";}}
       if (entrance.out === false) {if (!entrance.text.endsWith(" 🔽")) {entrance.text += " 🔽";}}
+//draws markers (based on entrancedata.js)
 const marker = L.marker([entrance.y, entrance.x], {icon: L.icon({iconUrl: entrance.icon, iconSize: [38, 38]})}).addTo(Canvas);
  marker.bindTooltip("To " + entrance.text);
- if (entrance.out === false) { // logic for entering
+ // logic for entering a room/cave
+ if (entrance.out === false) { 
     marker.on('click', function() { 
     currentLayer == Map[entrance.tolayer]
     const layerID = entrance.tolayer; const pinlayerID = entrance.tolayer; const entrancelayerID = entrance.tolayer; const arrayID = entrance.arrayid; const itemID = entrance.ItemID;
-        swapToRoom(Map[layerID][arrayID][itemID], Pins[pinlayerID][arrayID][itemID], Entrance[entrancelayerID][arrayID][itemID]);drawSingleBorder(Map[layerID][arrayID][itemID], layerID, arrayID, itemID);})
+        swapToRoom(Map[layerID][arrayID][itemID], Pins[pinlayerID][arrayID][itemID], Entrance[entrancelayerID][arrayID][itemID]);})
  }
-if (entrance.out === true) { // logic for leaving
+// logic for leaving a room/cave
+ if (entrance.out === true) { 
 marker.on('click', function(){
 currentLayer == Map[entrance.tolayer]; currentPinLayer == Pins[entrance.tolayer]; currentEntranceLayer == Entrance[entrance.tolayer]; 
 swapAll(currentLayer, currentPinLayer, currentEntranceLayer); drawBorder(currentLayer);
 Canvas.setView([entrance.zoomy,entrance.zoomx],entrance.zoomlevel);})
 }}}
 console.info(`✅ Successfully Created all Entrances`);
-
 };
-// fade in animation for map
 
+// fade in animation for map
 function fadeIn(imageOverlay, duration = 25) {
     let opacity = 0;
     const interval = .5;
@@ -140,69 +150,27 @@ function fadeIn(imageOverlay, duration = 25) {
     }, interval);
 }
 
-// swap all layers at the same time
-export default function swapAll(InputLayer, Input_PinLayer, Input_EntranceLayer){
-    removeAllLayers(); 
-    if (InputLayer !== undefined){drawMap(InputLayer); drawBorder(InputLayer); drawEntrance(Input_EntranceLayer);}
-    if (Input_PinLayer !== undefined){drawPins(Input_PinLayer);}
-};
+
+
 // individual swapfunctions
-function openTable (InputIndex,table){ tableContainer.style.display = 'block';  drawTable(InputIndex, table, 'tableContainer');};
-function removeTable(index){tableContainer.style.display = 'none'; deleteTable(index);};
 function swapToRoom (InputLayer, Input_PinLayer, Input_EntranceLayer){removeAllLayers();singleDrawMap(InputLayer); drawPins(Input_PinLayer); drawEntrance(Input_EntranceLayer);}
 function swapMap(InputLayer){removeMap(); drawMap (InputLayer);} 
 function swapPins(Input_PinLayer){removePins(); drawPins(Input_PinLayer);};
 function swapEntrance(Input_EntranceLayer){removePins(); drawEntrance(Input_EntranceLayer);};
 //removal functions
-function removeAllLayers(){ removeMap(); removePins();
-    console.info(`✅Removed All Layers`);
-}
+function removeAllLayers(){ removeMap(); removePins(); console.info(`✅Removed All Layers`);}
 function removePins(){Canvas.eachLayer(function (InputLayer) {if(InputLayer instanceof L.Marker) {Canvas.removeLayer(InputLayer);}})};
 function removeBorders(){Canvas.eachLayer(function (InputLayer) {if(InputLayer instanceof L.Rectangle) {Canvas.removeLayer(InputLayer);}})};
 function removeMap(){Canvas.eachLayer(function (InputLayer) {if(InputLayer instanceof L.ImageOverlay || InputLayer instanceof L.Rectangle) {Canvas.removeLayer(InputLayer);}})};
+
 //bounds function
 function findBounds(png){ const bounds = [[png.y, png.x], [png.y + png.height, png.x + png.width]]; return bounds;};
-//draws a singular map piece strict data of array --> what its looking for a sigular data point. so {data}
-function singleDrawMap(InputLayer) {
-    const bounds = findBounds(InputLayer); 
-    const overlay = L.imageOverlay(InputLayer.path,bounds, {crs: L.CRS.Simple, width: InputLayer.width, height: InputLayer.height}).addTo(Canvas); 
-    Canvas.fitBounds(bounds); fadeIn(overlay);} 
 
-    //draw single border
-function drawSingleBorder(layer, layeridnex ,arrayindex, itemindex) {
-    removeBorders();
+//draws a singular map piece strict data of array --> what its looking for a sigular data point. so {data} (for caves and rooms)
+function singleDrawMap(InputLayer) {const bounds = findBounds(InputLayer); const overlay = L.imageOverlay(InputLayer.path,bounds, {crs: L.CRS.Simple, width: InputLayer.width, height: InputLayer.height}).addTo(Canvas); Canvas.fitBounds(bounds); fadeIn(overlay);} 
+//draw single border (for caves and rooms)
+    
 
-    // Create a border for the single layer
-    const bounds = findBounds(layer);
-    const border = L.rectangle(bounds, {
-        color: 'transparent',
-        weight: 0,
-        fillOpacity: 0.1,
-        pngData: layer
-    }).addTo(Canvas);
 
-    // Add click event to the canvas to handle border highlighting
-    Canvas.on('click', function(e) {
-        const latLng = e.latlng;
-        // Check if the click is within the bounds
-        if (latLng.lat >= bounds[0][0] && latLng.lat <= bounds[1][0] &&
-            latLng.lng >= bounds[0][1] && latLng.lng <= bounds[1][1]) {
-            // Highlight the border
-            border.setStyle({
-                color: 'rgba(255, 255, 255, 1)',
-                weight: 3,
-                fillOpacity: 0.2,
-                dashArray: '5, 5'
-            });
-            document.getElementById('area').innerHTML = "Area: " + border.options.pngData.area;
-        } else {
-            // Reset the border style
-            border.setStyle({
-                color: 'transparent',
-                weight: 0,
-                fillOpacity: 0.1
-            });
-            document.getElementById('area').innerHTML = "";
-        }
-    });
-}
+function openTable (InputIndex,table){ tableContainer.style.display = 'block';  drawTable(InputIndex, table, 'tableContainer');};
+function removeTable(index){tableContainer.style.display = 'none'; deleteTable(index);};
