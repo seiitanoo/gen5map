@@ -63,3 +63,18 @@
 .popout button:active {
     transform: scale(1.1);
 }
+
+/* Menu Button Customization */
+
+#button2 {
+    background-image: url(media/site/cavebackground.png);
+    background-size: cover;
+    border-radius: 5px;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    color: white;
+}
+
+#button2:active {
+    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+    color: black;
+}

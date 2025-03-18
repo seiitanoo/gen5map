@@ -43,17 +43,6 @@ document.getElementById('version-switch').addEventListener('click', function() {
 
 
 
-
-document.getElementById('button2').addEventListener('click', function() {
-    const tableContainer = document.getElementById('tableContainer');
-    if (tableContainer) {
-      if (tableContainer.style.display === 'none' || tableContainer.style.display === '') {
-        tableContainer.style.display = 'block'; // Or 'inline', 'inline-block', etc.
-      } else {
-        tableContainer.style.display = 'none';
-      }
-    }
-  });
 document.getElementById('button1').addEventListener('click', function() {
     currentLayer = Map[0]; currentPinLayer = Pins[0]; currentEntranceLayer = Entrance[0];
     swapAll(currentLayer, currentPinLayer,currentEntranceLayer);
