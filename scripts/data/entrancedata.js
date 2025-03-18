@@ -43,17 +43,17 @@ let RoomLayer = [
 {out: true, tolayer: 0, y: 0, x: 87, zoomy:857,zoomx: 529,zoomlevel: 1, icon: EtrIco[0].image, text:"Aspertia City"}
 ],
 // 2 - 0 - 1 Poke Center
-[{out: true, tolayer: 0, y: 9, x: 124, zoomy:0,zoomx: 0,zoomlevel: 0, icon: defaultE, text:"Aspertia City"}],
+[{out: true, tolayer: 0, y: 9, x: 124, zoomy:521,zoomx: 443,zoomlevel: 1.5, icon: defaultE, text:"Aspertia City"}],
 // 2 - 0 - 2 1st House
-[{out: true, tolayer: 0, y: 15, x: 128, zoomy:0,zoomx: 0,zoomlevel: 0, icon: defaultE, text:"Aspertia City"}],
+[{out: true, tolayer: 0, y: 15, x: 128, zoomy:206,zoomx: 254,zoomlevel: 1.5, icon: defaultE, text:"Aspertia City"}],
 // 2 - 0 - 3 5th House
-[{out: true, tolayer: 0, y: 17, x: 136, zoomy:0,zoomx: 0,zoomlevel: 0, icon: defaultE, text:"Aspertia City"}],
+[{out: true, tolayer: 0, y: 17, x: 136, zoomy:766,zoomx: 643,zoomlevel: 1.5, icon: defaultE, text:"Aspertia City"}],
 // 2 - 0 - 4 Hugh's House
-[{out: true, tolayer: 0, y: 14, x: 133, zoomy:0,zoomx: 0,zoomlevel: 0, icon: defaultE, text:"Aspertia City"}],
+[{out: true, tolayer: 0, y: 14, x: 133, zoomy:360,zoomx: 350,zoomlevel: 1.5, icon: defaultE, text:"Aspertia City"}],
 // 2 - 0 - 5 Mom's House
-[{out: true, tolayer: 0, y: 21, x: 105, zoomy:0,zoomx: 0,zoomlevel: 0, icon: defaultE, text:"Aspertia City"}],
+[{out: true, tolayer: 0, y: 21, x: 105, zoomy:202,zoomx: 422,zoomlevel: 1.5, icon: defaultE, text:"Aspertia City"}],
 // 2 - 0 - 6 Trainer School 
-[{out: true, tolayer: 0, y: 23, x: 214, zoomy:0,zoomx: 0,zoomlevel: 0, icon: defaultE, text:"Aspertia City"}],
+[{out: true, tolayer: 0, y: 23, x: 214, zoomy:526,zoomx: 272,zoomlevel: 1.5, icon: defaultE, text:"Aspertia City"}],
 
     ]
 ];

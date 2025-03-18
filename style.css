@@ -138,15 +138,16 @@
 #map {
 width: 100vw; /* Use viewport width */
 height: 100vh; /* Use viewport height */
-background-image: url('media/site/background.png');
+
 background-repeat: repeat;
 position: fixed;
 animation: moveBackground 120s linear infinite;
 image-rendering: pixelated;
 top: 0;
 left: 0;
-z-index: -9999; /* Ensure it's on top of other elements */
+z-index: -9999; /* Ensure it's on top of other elements */;
 }
+/* background-ima: black; */
 @keyframes moveBackground {
     0% { background-position: 0 0; }
     100% { background-position: 0 100vh; }

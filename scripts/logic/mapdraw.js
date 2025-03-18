@@ -129,7 +129,7 @@ const marker = L.marker([entrance.y, entrance.x], {icon: L.icon({iconUrl: entran
 marker.on('click', function(){
 currentLayer == Map[entrance.tolayer]; currentPinLayer == Pins[entrance.tolayer]; currentEntranceLayer == Entrance[entrance.tolayer]; 
 swapAll(currentLayer, currentPinLayer, currentEntranceLayer); drawBorder(currentLayer);
-Canvas.setView([entrance.zoomy,entrance.zoomx],entrance.zoomlevel);})
+Canvas.setView([entrance.zoomy,entrance.zoomx],entrance.zoomlevel);});
 }}}
 console.info(`✅ Successfully Created all Entrances`);
 };

@@ -14,11 +14,35 @@
     <div id="menu-container">
         <button class="menu-button" onclick="toggleMenu()">☰</button>
         <div class="popout" id="popout">
-            <button id="button1">Overworld</button>
-            <button id="button2">Cave</button>
+            <button id="item-button-drop">Filters</button>
             <button id="version-switch">Switch Version</button>
         </div>
     </div> 
+
+    <!---Item Checklist Box-->
+    <div id="item-checklist">
+    <input type="checkbox" id="gym-checkbox" checked>
+    <label for="gym-checkbox" class="checked" data-for="gym-checkbox">Gyms</label>
+    
+    <input type="checkbox" id="entrance-checkbox" checked>
+    <label for="entrance-checkbox" class="checked" data-for="entrance-checkbox">Entrances</label>
+
+    <input type="checkbox" id="ball-checkbox" checked>
+    <label for="ball-checkbox" class="checked" data-for="ball-checkbox">Balls</label>
+    
+    <input type="checkbox" id="tm-checkbox" checked>
+    <label for="tm-checkbox" class="checked" data-for="tm-checkbox">TMs/HMs</label>
+    
+    <input type="checkbox" id="healing-checkbox" checked>
+    <label for="healing-checkbox" class="checked" data-for="healing-checkbox">Healing Items</label>
+    
+    <input type="checkbox" id="special-checkbox" checked>
+    <label for="special-checkbox" class="checked" data-for="special-checkbox">Special Items</label>
+    
+    <input type="checkbox" id="berry-checkbox" checked>
+    <label for="berry-checkbox" class="checked" data-for="berry-checkbox">Berries</label>
+
+</div>
 
     
     <div id="area"></div>
@@ -38,7 +62,7 @@
 
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script type ="module"src="./scripts/script.js"></script>
+    <script type="module"src="./scripts/script.js"></script>
     <script src="scripts/ui/menu.js"></script>
 </body>
 </html>

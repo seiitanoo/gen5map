@@ -77,4 +77,80 @@
 #button2:active {
     text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
     color: black;
+    opacity: .8;
+}
+
+/* Change the images of version switch button */
+/* Pre click*/
+#version-switch {
+    background-image: url(media/site/yellow.png);
+    transition: background-image 0.3s ease-in-out;
+
+}
+
+/* Post click */
+#version-switch.active {
+    background-image: url(media/site/blue.png);
+}
+
+
+/* Item List Button */
+
+#item-button-drop {
+    transition: background-color 0.3 ease-in-out, filter 0.3s ease-in-out;
+}
+
+#item-button-drop.active {
+    background-color: #e8e8e8;
+    filter: brightness(0.7);
+}
+
+/* Item Checklist */
+#item-checklist {
+    display: none;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 180px;
+    grid-template-columns: repeat(2, 1fr); /* Create two equal columns */
+    gap: 5px; /* Add spacing between items */
+    justify-items: stretch;
+}
+/* Styling for the checkboxes */
+#item-checklist input[type="checkbox"] {
+    display: none;
+}
+
+/* Styling for the labels */
+#item-checklist label {
+    display: block;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+    color: white;
+    margin-top: 5px;
+    text-align: center;
+    max-width: 100px;
+}
+/* Styling when Unchecked*/
+#item-checklist label.unchecked {
+    background-color: red;
+}
+
+/* Styling when Checked*/
+#item-checklist label.checked {
+    background-color: green;
+}
+
+#item-button-drop.active + item-checklist {
+    display: grid;
+}
+@media (max-width: 600px) {
+    #items-checklist {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
 }
